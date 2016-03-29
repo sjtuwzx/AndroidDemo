@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wzx.android.demo.pinnedHeader.MyFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+     <!--    <com.wzx.android.demo.pinnedHeader.MyButton
+            android:id="@+id/btn1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:visibility="invisible" />
+
+        <com.wzx.android.demo.pinnedHeader.MyButton
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1" 
+            android:visibility="invisible"/> -->
+
+        <com.wzx.android.demo.pinnedHeader.MyButton
+            android:id="@+id/btn3"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right" /> 
+    </LinearLayout>
+    
+    <TextView android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#FF000000"
+        android:layout_gravity="center_vertical"/>
+    
+    <TextView android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#FF00FF00"
+        android:layout_gravity="top"
+        android:layout_marginTop="10dp"/>
+    
+    <TextView android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#FF0000FF"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"/> 
+
+</com.wzx.android.demo.pinnedHeader.MyFrameLayout>

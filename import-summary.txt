@@ -1,0 +1,312 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\inspectionProfiles\
+* .idea\inspectionProfiles\Project_Default.xml
+* .idea\inspectionProfiles\profiles_settings.xml
+* .idea\libraries\
+* .idea\libraries\libs.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\scopes\
+* .idea\scopes\scope_settings.xml
+* .idea\vcs.xml
+* .idea\workspace.xml
+* AndroidDemo.iml
+* doc\
+* doc\allclasses-frame.html
+* doc\allclasses-noframe.html
+* doc\constant-values.html
+* doc\ctrip\
+* doc\ctrip\android\
+* doc\ctrip\android\hotel\
+* doc\ctrip\android\hotel\sender\
+* doc\ctrip\android\hotel\sender\filter\
+* doc\ctrip\android\hotel\sender\filter\FilterGroup.html
+* doc\ctrip\android\hotel\sender\filter\FilterNode.OnSelectChangeListener.html
+* doc\ctrip\android\hotel\sender\filter\FilterNode.html
+* doc\ctrip\android\hotel\sender\filter\FilterParent.html
+* doc\ctrip\android\hotel\sender\filter\FilterRoot.html
+* doc\ctrip\android\hotel\sender\filter\InvisibleFilterNode.html
+* doc\ctrip\android\hotel\sender\filter\UnlimitedFilterNode.html
+* doc\ctrip\android\hotel\sender\filter\class-use\
+* doc\ctrip\android\hotel\sender\filter\class-use\FilterGroup.html
+* doc\ctrip\android\hotel\sender\filter\class-use\FilterNode.OnSelectChangeListener.html
+* doc\ctrip\android\hotel\sender\filter\class-use\FilterNode.html
+* doc\ctrip\android\hotel\sender\filter\class-use\FilterParent.html
+* doc\ctrip\android\hotel\sender\filter\class-use\FilterRoot.html
+* doc\ctrip\android\hotel\sender\filter\class-use\InvisibleFilterNode.html
+* doc\ctrip\android\hotel\sender\filter\class-use\UnlimitedFilterNode.html
+* doc\ctrip\android\hotel\sender\filter\package-frame.html
+* doc\ctrip\android\hotel\sender\filter\package-summary.html
+* doc\ctrip\android\hotel\sender\filter\package-tree.html
+* doc\ctrip\android\hotel\sender\filter\package-use.html
+* doc\deprecated-list.html
+* doc\help-doc.html
+* doc\index-files\
+* doc\index-files\index-1.html
+* doc\index-files\index-10.html
+* doc\index-files\index-11.html
+* doc\index-files\index-2.html
+* doc\index-files\index-3.html
+* doc\index-files\index-4.html
+* doc\index-files\index-5.html
+* doc\index-files\index-6.html
+* doc\index-files\index-7.html
+* doc\index-files\index-8.html
+* doc\index-files\index-9.html
+* doc\index.html
+* doc\overview-tree.html
+* doc\package-list
+* doc\resources\
+* doc\resources\background.gif
+* doc\resources\tab.gif
+* doc\resources\titlebar.gif
+* doc\resources\titlebar_end.gif
+* doc\stylesheet.css
+* ic_launcher-web.png
+* out\
+* out\production\
+* out\production\AndroidDemo\
+* out\production\AndroidDemo\AndroidDemo.apk
+* out\production\AndroidDemo\android\
+* out\production\AndroidDemo\android\support\
+* out\production\AndroidDemo\android\support\v7\
+* out\production\AndroidDemo\android\support\v7\appcompat\
+* out\production\AndroidDemo\android\support\v7\appcompat\BuildConfig.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$anim.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$attr.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$bool.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$color.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$dimen.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$drawable.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$id.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$integer.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$layout.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$string.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$style.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R$styleable.class
+* out\production\AndroidDemo\android\support\v7\appcompat\R.class
+* out\production\AndroidDemo\com\
+* out\production\AndroidDemo\com\wzx\
+* out\production\AndroidDemo\com\wzx\android\
+* out\production\AndroidDemo\com\wzx\android\demo\
+* out\production\AndroidDemo\com\wzx\android\demo\BitmapHelper.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$CollapseTextLayoutCreator$CollapseTextLayout.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$CollapseTextLayoutCreator.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$SavedState$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$SavedState.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView$TextLayout.class
+* out\production\AndroidDemo\com\wzx\android\demo\CollapsibleTextView.class
+* out\production\AndroidDemo\com\wzx\android\demo\ExpandableTextView$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\ExpandableTextView$SavedState$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\ExpandableTextView$SavedState.class
+* out\production\AndroidDemo\com\wzx\android\demo\ExpandableTextView.class
+* out\production\AndroidDemo\com\wzx\android\demo\GlobalAnimationHelper$GlobalAnimationListener$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\GlobalAnimationHelper$GlobalAnimationListener.class
+* out\production\AndroidDemo\com\wzx\android\demo\GlobalAnimationHelper.class
+* out\production\AndroidDemo\com\wzx\android\demo\ImageGridLayout$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\ImageGridLayout$AdapterDataSetObserver.class
+* out\production\AndroidDemo\com\wzx\android\demo\ImageGridLayout$RecycleBin.class
+* out\production\AndroidDemo\com\wzx\android\demo\ImageGridLayout.class
+* out\production\AndroidDemo\com\wzx\android\demo\MainActivity.class
+* out\production\AndroidDemo\com\wzx\android\demo\MethodElapsedTimeStatistics.class
+* out\production\AndroidDemo\com\wzx\android\demo\MyTextView$MyLayout.class
+* out\production\AndroidDemo\com\wzx\android\demo\MyTextView.class
+* out\production\AndroidDemo\com\wzx\android\demo\TestActivity$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\TestActivity$2.class
+* out\production\AndroidDemo\com\wzx\android\demo\TestActivity.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\ItemsAdapter$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\ItemsAdapter$ImageGridAdapter.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\ItemsAdapter$ViewHolder.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\ItemsAdapter.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MultiListAdapter$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MultiListAdapter$AdapterInfo$Builder.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MultiListAdapter$AdapterInfo.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MultiListAdapter.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MyButton.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\MyFrameLayout.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedDoubleHeaderListView.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedDragableHeaderListView$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedDragableHeaderListView.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView$OnItemClickListener.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView$PinnedSectionedHeaderAdapter.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView$SavedState$1.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView$SavedState.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderListView.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\PinnedHeaderTouchHelper.class
+* out\production\AndroidDemo\com\wzx\android\demo\pinnedHeader\SectionedBaseAdapter.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\
+* out\production\AndroidDemo\com\wzx\android\demo\v2\BuildConfig.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$anim.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$attr.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$bool.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$color.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$dimen.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$drawable.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$id.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$integer.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$layout.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$menu.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$string.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$style.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R$styleable.class
+* out\production\AndroidDemo\com\wzx\android\demo\v2\R.class
+* out\production\AndroidDemo\ctrip\
+* out\production\AndroidDemo\ctrip\android\
+* out\production\AndroidDemo\ctrip\android\hotel\
+* out\production\AndroidDemo\ctrip\android\hotel\filter\
+* out\production\AndroidDemo\ctrip\android\hotel\filter\DeviceUtil.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterListAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeActivity$1.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeActivity$2.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeActivity$OpenTreeTask$1.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeActivity$OpenTreeTask.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeActivity.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView$1.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView$InternalListView.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView$LazyLoader.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView$OnItemClickListener.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView$TreeViewConfig.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\FilterTreeView.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\TreeListView$FilterAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\TreeListView.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\FilterActivity.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\FilterListAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\FilterListView$FilterAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\FilterListView.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$Callback.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$ClickHandler.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$LazyLoader.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$OnSelectChangeListener.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$SubTreeOpener.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode$ValueInflater.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeNode.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView$1.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView$2.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView$3.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView$4.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView$TreeObjectAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\filter\widget\TreeView.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\AllFilterNode.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterGroup$FilterGroupOpenListener.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterGroup$FilterGroupOpenPerformer.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterGroup.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterNode$OnSelectChangeListener.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterNode.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterParent.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\FilterRoot.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\InvisibleFilterNode.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\UnlimitedFilterNode.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\VirtualFilterRoot.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity$1.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity$2.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity$3.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity$4.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity$5.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\FilterTestActivity.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\LazyOpenFilterGroup.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\SimpleAdapter$ViewHolder.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\SimpleAdapter.class
+* out\production\AndroidDemo\ctrip\android\hotel\sender\filter\test\TestFilterRoot.class
+* out\production\appcompat_v7\
+* out\production\appcompat_v7\android\
+* out\production\appcompat_v7\android\support\
+* out\production\appcompat_v7\android\support\v7\
+* out\production\appcompat_v7\android\support\v7\appcompat\
+* out\production\appcompat_v7\android\support\v7\appcompat\BuildConfig.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$anim.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$attr.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$bool.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$color.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$dimen.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$drawable.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$id.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$integer.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$layout.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$string.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$style.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R$styleable.class
+* out\production\appcompat_v7\android\support\v7\appcompat\R.class
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:21.0.3
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:21.0.3
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:21.0.3]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\businessModel.jar => app\libs\businessModel.jar
+* lint.xml => app\lint.xml
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

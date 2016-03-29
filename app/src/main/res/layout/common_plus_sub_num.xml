@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wzx.android.demo.CtripPlusSubView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/sub_btn"
+        android:layout_width="41dip"
+        android:layout_height="33dip"
+        android:layout_centerVertical="true"
+        android:background="@drawable/common_hotel_order_selector_ic_minus"
+        android:gravity="center_vertical" />
+
+    <View
+        android:layout_width="1dip"
+        android:layout_height="33dip"
+        android:background="#099fde" />
+
+    <TextView
+        android:id="@+id/num_value"
+        style="@style/text_18_1084bc"
+        android:layout_width="40dip"
+        android:layout_height="33dip"
+        android:background="@drawable/common_ic_white_space_normal"
+        android:gravity="center" />
+
+    <View
+        android:layout_width="1dip"
+        android:layout_height="33dip"
+        android:background="#099fde" />
+
+    <View
+        android:id="@+id/plus_btn"
+        android:layout_width="41dip"
+        android:layout_height="33dip"
+        android:layout_centerVertical="true"
+        android:background="@drawable/common_hotel_order_select_ic_plus"
+        android:gravity="center_vertical" />
+</com.wzx.android.demo.CtripPlusSubView>

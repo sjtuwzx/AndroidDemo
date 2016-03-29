@@ -1,0 +1,145 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.wzx.android.demo.v2"
+        minSdkVersion 14
+        targetSdkVersion 23
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:+'
+    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile files('libs/businessModel.jar')
+}
+
+int countDirectory(File file) {
+    File[] files = file.listFiles()
+    int count = 0
+    files.each {
+        if (it.isFile()) {
+            count += countFile(it)
+        } else {
+            count += countDirectory(it)
+        }
+    }
+    return count
+}
+
+int countFile(File file) {
+    int count = 0
+    if (!file.name.endsWith(".java")) {
+        return 0
+    }
+    file.eachLine {
+        count ++
+    }
+    return count
+}
+
+
+task countLines << {
+    println "===============count line===============================";
+    File source = new File(project.projectDir,"src/main/java")
+    int count = countDirectory(source)
+    StringBuilder sb = new StringBuilder();
+    sb.append(project.getName()+ ":" + count).append("\n");
+    println(project.getName()+ ":" + count)
+    File[] modules = new File(source,"ctrip/android/hotel").listFiles()
+    modules.each {
+        int moduleSize = countDirectory(it)
+        println("   " +it.name+":" + moduleSize)
+        sb.append("   " +it.name+":" + moduleSize).append("\n");
+    }
+    Date date = new Date();
+    java.text.SimpleDateFormat format = new SimpleDateFormat("yyy-dd-mm HH:mm:ss");
+    String name = "lines.txt";
+    File file = new File(project.projectDir,name);
+    file.append("==============" + format.format(date) +"==============\n");
+    file.append(sb);
+}
+
+void buildFileRepeatedCodesIndex(File file, HashMap <String, ArrayList<String>> repeatedCodesIndex, int repeatedLines) {
+    if (!file.name.endsWith(".java")) {
+        return;
+    }
+    List<String> lines = file.readLines();
+    int N = lines.size();
+    StringBuffer sb = new StringBuffer(128);
+    for (int i = 0; i <= N - repeatedLines; i++) {
+        int realLineCount = 0;
+        for (int j = 0; j < repeatedLines; j++) {
+            String line = lines.get(i + j).trim();
+            if (!line.isEmpty()) {
+                ++realLineCount;
+            }
+            sb.append(line).append("|");
+
+        }
+        if (realLineCount > repeatedLines / 2) {
+            String key = sb.toString();
+            sb.setLength(0);
+            if (!repeatedCodesIndex.containsKey(key)) {
+                ArrayList<String> linePaths = new ArrayList<>();
+                repeatedCodesIndex.put(key, linePaths);
+            }
+            String value = file.getAbsolutePath() + ":" + (i + 1);
+            ArrayList<String> linePaths = repeatedCodesIndex.get(key);
+            linePaths.add(value);
+        }
+    }
+}
+
+void buildDirectoryRepeatedCodesIndex(File file, HashMap <String, ArrayList<String>> repeatedCodesIndex, int repeatedLines) {
+    File[] files = file.listFiles()
+    files.each {
+        if (it.isFile()) {
+            buildFileRepeatedCodesIndex(it, repeatedCodesIndex, repeatedLines);
+        } else {
+            buildDirectoryRepeatedCodesIndex(it, repeatedCodesIndex, repeatedLines);
+        }
+    }
+}
+
+HashMap<String, ArrayList<String>> buildRepeatedCodesIndex(int repeatedLines) {
+    HashMap <String, ArrayList<String>> repeatedCodesIndex = new HashMap<>();
+    File source = new File(project.projectDir,"src/main/java/ctrip/android/hotel");
+    buildDirectoryRepeatedCodesIndex(source, repeatedCodesIndex, repeatedLines);
+
+    return repeatedCodesIndex;
+}
+
+void printRepeatedCodeInfo(ArrayList<String> linePaths) {
+    println "=============================================="
+    for (String linePath : linePaths) {
+        println linePath;
+    }
+    println "==============================================\n";
+}
+
+task findRepeatedCodes << {
+    println "===============find repeated codes===============================";
+    HashMap<String, ArrayList<String>> repeatedCodesIndex = buildRepeatedCodesIndex(50);
+
+    Set<String> keySet = repeatedCodesIndex.keySet();
+    for (String key : keySet) {
+        ArrayList<String> linePaths = repeatedCodesIndex.get(key);
+        if (linePaths.size() > 1) {
+            printRepeatedCodeInfo(linePaths);
+        }
+    }
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <com.wzx.android.demo.HotelLocationTextView
+        android:id="@+id/location_text"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/down_line"
+        app:textSize="20dp"
+        app:textColor="#ff0000"
+        app:commercialDistrictMarginLeft="10dp"/>
+
+    <com.wzx.android.demo.HeaderUnTouchScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="60dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.wzx.android.demo.HotelTabsLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:background="#ff00ff" />
+
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:background="#ffff00"
+                    android:layout_marginLeft="-20dp" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:background="#f34423"
+                    android:layout_marginLeft="-20dp" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:background="#532905"
+                    android:layout_marginLeft="-20dp" />
+
+                <View
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:background="#234823"
+                    android:layout_marginLeft="-20dp" />
+
+            </com.wzx.android.demo.HotelTabsLayout>
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="380dp" />
+
+            <com.wzx.android.demo.ExpandableTextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:ellipsize="marquee"
+                android:drawablePadding="30dp"
+                app:max_collapse_line="3"
+                app:is_expanded="false"
+                app:collapse_button="@drawable/flight_icon_arrow_up"
+                app:expand_button="@drawable/flight_icon_arrow_down"
+                android:background="#FF00FFFF" />
+
+            <com.wzx.android.demo.CollapsibleTextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                app:text="ctrip"
+                app:textSize="20sp"
+                app:textColor="#FF0000FF"
+                app:text_expand="展开"
+                app:text_collapse="收起"
+                app:tip_textColor="#FF00FF00"
+                app:is_collapsed="false"
+                app:max_collapse_line="3"
+                app:collapse_button="@drawable/flight_icon_arrow_up"
+                app:expand_button="@drawable/flight_icon_arrow_down" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+        </LinearLayout>
+    </com.wzx.android.demo.HeaderUnTouchScrollView>
+</FrameLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    
+    
+    <ctrip.android.hotel.filter.widget.FilterListView android:id="@+id/filter_header_list"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:scrollbars="none"
+        android:listSelector="@drawable/hotel_tree_list_selector"
+        android:divider="#FFDDDDDD"
+        />
+    
+    <ctrip.android.hotel.filter.widget.FilterListView android:id="@+id/filter_middle_list"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:cacheColorHint="#00000000"
+        android:scrollbars="none"
+        android:listSelector="@drawable/hotel_tree_list_selector"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:divider="#FFDDDDDD"
+        />
+    
+    <ctrip.android.hotel.filter.widget.FilterListView android:id="@+id/filter_tail_list"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:cacheColorHint="#00000000"
+        android:scrollbars="none"
+        android:listSelector="@drawable/hotel_tree_list_selector"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:divider="#FFDDDDDD"
+        />
+
+</LinearLayout>

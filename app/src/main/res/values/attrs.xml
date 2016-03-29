@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <attr name="column_count" format="integer" />
+    <attr name="child_width" format="dimension|reference" />
+    <attr name="child_height" format="dimension|reference" />
+    <attr name="horizontal_spacing" format="dimension|reference" />
+    <attr name="vertical_spacing" format="dimension|reference" />
+    <attr name="dividerColor" format="color|reference" />
+    <attr name="dividerSize" format="dimension|reference" />
+    <attr name="drawEdge" format="boolean|reference"/>
+    
+    <!-- ctrip.android.view.hotel.common.widget.ImageGridLayout -->
+    <declare-styleable name="ImageGridLayout">
+        <attr name="column_count" />
+        <attr name="child_width" />
+        <attr name="child_height" />
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RecycleGridLayout">
+        <attr name="column_count" />
+        <attr name="child_width"/>
+        <attr name="child_height"/>
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+        <attr name="dividerColor" />
+        <attr name="dividerSize" />
+        <attr name="drawEdge"/>
+    </declare-styleable>
+
+    <declare-styleable name="SmartGridLayout">
+        <attr name="column_count" />
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+        <attr name="dividerColor" />
+        <attr name="dividerSize" />
+        <attr name="drawEdge"/>
+        <attr name="drawable_vertical_padding" format="dimension|reference" />
+    </declare-styleable>
+
+    <attr name="max_collapse_line" format="integer" />
+    <attr name="collapse_button" format="reference" />
+    <attr name="expand_button" format="reference" />
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="is_expanded" format="boolean" />
+        <attr name="max_collapse_line" />
+        <attr name="collapse_button" />
+        <attr name="expand_button" />
+    </declare-styleable>
+
+
+    <attr name="textSize" format="dimension|reference" />
+    <attr name="textColor" format="color|reference" />
+    <attr name="max_line" format="integer" />
+
+    <declare-styleable name="CollapsibleTextView">
+        <attr name="text" format="string|reference" />
+        <attr name="textSize"/>
+        <attr name="textColor" />
+        <attr name="text_expand" format="string|reference" />
+        <attr name="text_collapse" format="string|reference" />
+        <attr name="tip_textColor" format="color|reference" />
+        <attr name="is_collapsed" format="boolean" />
+        <attr name="collapse_button" />
+        <attr name="expand_button" />
+        <attr name="max_collapse_line" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelAutoScaleTextView">
+        <attr name="constantText" format="string|reference" />
+        <attr name="autoText" format="string|reference" />
+        <attr name="textSize"/>
+        <attr name="textColor" />
+        <attr name="max_line" />
+        <attr name="min_auto_scale_char" format="integer|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelLocationTextView">
+        <attr name="textSize"/>
+        <attr name="textColor" />
+        <attr name="commercialDistrictMarginLeft" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DividerLinearLayout">
+        <attr name="dividerColor" />
+        <attr name="dividerSize" />
+        <attr name="dividerPaddingStart" format="dimension|reference" />
+        <attr name="dividerPaddingEnd" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelFilterLayout">
+        <attr name="max_line"/>
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+        <attr name="paddingLastLineEnd" format="dimension|reference" />
+        <attr name="autoStretchChildren" format="boolean|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelLabelView">
+        <attr name="horizontal_spacing" />
+    </declare-styleable>
+
+    <declare-styleable name="FilterSectionView">
+        <attr name="header_list_width" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TextAppearance2">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:textStyle" />
+        <attr name="android:typeface" />
+        <attr name="textAllCaps" />
+    </declare-styleable>
+
+    <declare-styleable name="SlidingRemoveView">
+        <attr name="container_view_id" format="reference" />
+        <attr name="remove_button_id" format="reference" />
+        <attr name="remove_animator_duration" format="integer|reference" />
+    </declare-styleable>
+
+</resources>

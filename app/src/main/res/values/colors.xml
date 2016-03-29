@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- common color: do not change -->
+
+    <color name="common_bg_search_btn_normal">#ff9913</color> <!-- oranger -->
+    <color name="common_bg_search_btn_pressed">#e58911</color>
+    <color name="common_bg_notmember_btn_normal">#15a4d5</color> <!-- blue -->
+    <color name="common_bg_notmember_btn_pressed">#1393bf</color>
+    <color name="common_bg_fanxian_btn_normal">#29b22b</color> <!-- dark green -->
+    <color name="common_bg_fanxian_btn_pressed">#25a027</color>
+    <color name="common_bg_btn_disable">#bbbbbb</color> <!-- dark gray, all disable btn bg -->
+    <color name="common_bg_btn_disable_login">#f5ba6a</color> <!-- dark gray, all disable btn bg -->
+    <color name="common_text_btn_normal">#ffffff</color> <!-- white, same as pressed, same as disable -->
+    <color name="common_text_btn_disable">#7fffffff</color> <!-- 50% white -->
+
+    <color name="common_bg_tag_photo">#ff4444</color> <!-- red, tag bg on photo -->
+    <color name="pay_bg_submit_btn_normal">#ff9a14</color>
+
+    <!-- common color end -->
+    
+	<color name="list_item_select">#e8e8e8</color>
+	<color name="all_search_background">#ffffff</color>
+    <color name="all_search_header">#e6f0f7</color>
+    <color name="cp4_item_pressed">#E3E3E1</color>
+    <color name="home_myctrip">#ff9913</color>
+    <color name="home_bg">#E7F8FF</color>
+    <color name="yellow">#ffffff00</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_a40">#66ffffff</color>
+    <color name="white_a70">#b2ffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="dark_gray">#ff585858</color>
+    <color name="light_gray2">#bdbdbd</color>
+    <color name="gray">#ff333333</color>
+    <color name="lighter_gray">#666666</color>
+
+    <color name="transparent_80">#80000000</color>    
+    <color name="transparent_70">#b3ffffff</color>
+    <color name="transparent_60">#60ffffff</color>
+    <color name="blue">#124e96</color>
+    <color name="green">#0D9151</color>
+    <color name="dark_green">#088347</color>
+    <color name="senior_filter_blue">#0065ca</color>
+    <color name="light_blue">#acd7ff</color>
+    <color name="dark_orange">#f85d00</color>
+    <color name="feed_item_track">#ffe8e4dd</color>
+    <color name="red">#f85d00</color>
+    <color name="dart_red">#FF2D55</color>
+    <color name="orange">#ff9913</color>
+    <color name="brown">#654019</color>
+    <color name="light_gray3">#ffdadada</color>
+    <color name="light_gray">#9b9b9b</color>
+    <color name="light_gray1">#99999999</color>
+    <color name="light_gray4">#c4c3c3</color>
+    <color name="list_dark">#001023</color>
+    <color name="list_light">#203249</color>
+    <color name="list_arrive">#00ff8a</color>
+    <color name="list_late">#ff2a00</color>
+    <color name="list_cancel">#ff9600</color>
+    <color name="promotion_bg">#ffd5e6f8</color>
+    <color name="split_line_top">#ff00070c</color>
+    <color name="black_a10">#1a000000</color>
+    <color name="split_line_bottom">#ff014481</color>
+    <color name="ui_bg_medium_gray">#ffe2e2e2</color>
+        <color name="fast_pay_change_card_title">#f0f0f0</color>
+
+    <color name="ui_bg_touch">#55cccccc</color>
+    <color name="ui_bg_expand_group">#ffd0d0d0</color>
+    <color name="transparent_background">#50000000</color>
+    <color name="transparent_background_2">#05000000</color>
+    <color name="travel_title_background">#b5dffe</color>
+    <color name="travel_background">#faf5e8</color>
+    <color name="travel_input_background">#dceffd</color>
+    <color name="travel_dest_currentseason">#b5d0e4</color>
+    <color name="hint">#999999</color>
+    <color name="all_search_blue">#0a9fde</color>
+    <color name="all_search_yellow">#ff7d13</color>
+    <color name="all_search_start">#666666</color>
+    <color name="all_search_black">#333333</color>
+    <color name="background_dialog">#99000000</color>
+    <color name="background_dark">#ff000000</color>
+    <color name="black_hotelcover">#4c000000</color>
+    <color name="background_light">#ffffffff</color>
+    <color name="bright_foreground_dark">@color/background_light</color>
+    <color name="bright_foreground_light">@color/background_dark</color>
+    <color name="bright_foreground_dark_inverse">@color/bright_foreground_light</color>
+    <color name="bright_foreground_light_inverse">@color/bright_foreground_dark</color>
+    <color name="ctrip_index_title_split">#50bebebe</color>
+    <color name="dim_foreground_dark">#bebebe</color>
+    <color name="dim_foreground_dark_disabled">#80bebebe</color>
+    <color name="dim_foreground_dark_inverse">#323232</color>
+    <color name="dim_foreground_dark_inverse_disabled">#80323232</color>
+    <color name="hint_foreground_dark">#808080</color>
+    <color name="dim_foreground_light">#323232</color>
+    <color name="dim_foreground_light_disabled">#80323232</color>
+    <color name="dim_foreground_light_inverse">#bebebe</color>
+    <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
+    <color name="text_num_gray">#333</color>
+    <color name="dialog_title_blue">#9CCCF7</color>
+    <color name="flight_line_incomplete">#ff9a9a9a</color>
+    <color name="flight_line_incomplete_glow">#4d9a9a9a</color>
+    <color name="flight_filter_bg">#334250</color>
+    <color name="flight_line_complete">#fff3f3f3</color>
+    <color name="flight_line_complete_glow">#4df3f3f3</color>
+    <color name="hotel_inquire_text_hint">#cbd2d5</color>
+    <color name="hotel_keyword_text_hint">#d6d6d6</color>
+    <color name="text_pin_grid_desc">#ff5d5d5d</color>
+    <color name="text_dark">#ff3d3d3d</color>
+    <color name="text_medium">#ff666666</color>
+    <color name="text_light">#ff9a9a9a</color>
+    <color name="text_really_light">#ffd2d2d2</color>
+    <color name="fast_pay_title_divder">#d2d2d2</color>
+    <color name="fast_pay_bank_divder">#e0e0e0</color>
+    <color name="fast_pay_choice_divder">#d8d8d8</color>
+    <color name="text_very_light">#ffc2c2c2</color>
+    <color name="text_red">#ffc31c22</color>
+    <color name="table_bg_normal">#ffffff</color>
+    <color name="table_bg_press">#e2e2e2</color>
+    <color name="table_stroke">#c1c9ca</color>
+    <color name="table_shadow">#66555d5f</color>
+    <color name="table_shadow_dark">#ff555d5f</color>
+    <color name="table_shadow_light">#33555d5f</color>
+    <color name="new_function">#f5f5f5</color>
+    <color name="fast_pay_bg">#90000000</color>
+    <color name="sub_bg">#f3f5f3</color>
+    <color name="sub_bg2">#e2e2e2</color>
+    <color name="list_detail_bg">#f3f5f5</color>
+    <color name="hotel_list_tab">#ececec</color>
+    <color name="flignt_list_item_click">#e1e3e3</color>
+    <color name="space_list_item_click">#fffdec</color>
+    <color name="dialog_order_bg">#e7e7e7</color>
+    <color name="progress_bg_returnFee">#f6fcff</color>
+    <color name="detail_bg_returnFee">#efeff4</color>
+    <color name="comment_bar">#0066cc</color>
+    <color name="dde0e1">#dde0e1</color>
+    <color name="voice_guide_bg">#99000000</color>
+    <color name="title_text_disable">#4e86bb</color>
+    <color name="voide_line">#e3e3e3</color>
+    <color name="disable_pay">#ff9b3f</color>
+    <color name="date_color">#555759</color>
+    <color name="title_right_disable">#4e86bb</color>
+    <color name="bottom_tag_color">#eeeeee</color>
+    <color name="selfroute_line_togo">#77a154</color>
+    <color name="selfroute_line_passed">#ee8343</color>
+    <color name="bottom_panel">#dce1e2</color>
+    <color name="self_list_item_pressed_bg">#333a3f40</color>
+    <color name="grid_state_pressed">#BB7dbcd3</color>
+    <color name="grid_state_focused">#777dbcd3</color>
+    <color name="city_btn_state_pressed">#E2E2E2</color>
+    <color name="city_btn_state_normal">#00000000</color>
+    <color name="galleyr_state_selected">#016dc8</color>
+    <color name="galleyr_bg">#616161</color>
+    <color name="assignment_disable">#f3f4f4</color>
+    <color name="hotel_detail_title_bg">#0064c2</color>
+    <color name="showboard_edit_hint">#bbc3c4</color>
+    <color name="tab_defalut_text_color">#666666</color>
+    <color name="tab_selected_text_color">#029DE1</color>
+    <color name="price_star">#cfcfcf</color>
+    <color name="freetrip_flight_titlebar">#d9e6ee</color>
+    <color name="freetrip_hotel_titlebar">#ffedd7</color>
+    <color name="freetrip_promotion_titlebar">#e7ede3</color>
+    <color name="freetrip_detail_tip">#fffadf</color>
+    <color name="freetrip_flight_depart_bg">#32a6d7</color>
+    <color name="freetrip_flight_return_bg">#18c856</color>
+    <color name="freetrip_detail_room_item_bg">#fff8f0</color>
+    <color name="freetrip_detail_flight_item_bg">#88CBE3</color>
+    <color name="list_view_item_press_color">#E3E3E1</color>
+    <color name="blood_red">#FF3B30</color>
+	<color name="blood_red_aaa">#AAFF3B30</color>
+	<color name="flight_go_send_bg">#ffa914</color>
+	<color name="flight_go_send_bg_holo">#b2b2b2</color>
+	<color name="flight_mask_bg">#66000000</color>
+	
+    <!-- 5.4 flight dynamic -->
+    <color name="indicator_page_fill">#1491c5</color>
+    <color name="flight_dynamic_indicator_stroke_fill">#55888888</color>
+    <color name="global_order_info_bg">#f1f1f1</color>
+
+
+    <color name="freetrip_order_detail_titlebar1">#fbfafa</color>
+    <color name="freetrip_order_detail_titlebar2">#f7f6f6</color>
+    <color name="freetrip_order_detail_titlebar3">#ffeed7</color>
+    <color name="freetrip_order_detail_titlebar4">#e7eee2</color>
+    <color name="freetrip_order_detail_titlebar5">#d9e6ed</color>
+    <color name="freetrip_order_detail_price_bg">#74a4d7</color>
+    
+    <!-- 5.6 我的携程 未出行订单 -->
+    <color name="my_ctrip_untravelorder_status_bg_color">#EFEFEF</color>
+
+    <!-- 5.0 airport_strategy -->
+    <color name="bg_airport_bus_stop">#f8f8f8</color>
+    <color name="line_airport_bus_detail">#dfdfdf</color>
+    <color name="voice_btn">#a9a9a9</color>
+    <!-- 蓝 -->
+    <color name="tag_blue">#74a4d7</color>
+    <!-- 橙 -->
+    <color name="tag_orange">#fd8612</color>
+    <color name="tag_blue_bg">#74a4d7</color>
+    <color name="tag_orange_bg">#fc3d08</color>
+    <color name="tag_yellow_bg">#fd8612</color>
+    <color name="tag_gray_bg">#999999</color>
+    <color name="tag_red">#fc3b44</color>
+    <color name="group_tag_cccccc">#cccccc</color>
+    <color name="hotel_inquire_before6_color">#15a4d5</color>
+    <color name="hotel_inquire_after6_color">#8d8d8d</color>
+    <color name="destination_around_place_bg">#52bd89</color>
+    <color name="destination_all_place_bg">#54b6de</color>
+    <color name="destination_recommend_bg">#ebebeb</color>
+    <color name="destination_recommend_textview_bg">#ebebeb</color>
+    <color name="destination_more_recommend_textview_bg_press">#f6f6f6</color>
+    <color name="destination_more_recommend_textview_bg">#f6f6f6</color>
+    <color name="destination_around_and_allplace_bg">#d9d9d9</color>
+    <color name="destination_strategy_recommend_city_textcolor">#ffffff</color>
+    <color name="strategy_city_line_textcolor">#c7cbcc</color>
+    <color name="destination_index_city_line_textcolor">#e5e5e5</color>
+    <color name="strategy_city_textcolor">#444444</color>
+    <color name="group">#fc3d08</color>
+    <color name="wise">#fb000e</color>
+    <color name="carrental_dark">#f8f8f8</color>
+    <color name="carrental_dark2">#d7d7d7</color>
+    <color name="inquire_no_select">#99ffffff</color>
+    <color name="flight_dynamic_message_bg">#fdf6e3</color>
+    <color name="route_way">#0075ad</color>
+    <color name="bg_tab_filter_hotel_selected">#dfdfdf</color>
+    <color name="bg_tab_filter_hotel_unselected">#f8f8f8</color>
+    <color name="return_fail_bg_color">#fadfda</color>
+    <color name="global_list_item_selected">#FFFDEB</color>
+    <color name="global_list_item_pressed">#ededed</color>
+    <color name="filter_tab_item_select">#1084bc</color>
+    <color name="filter_tab_text">#cc000000</color>
+    <color name="map_btn">#d3d3d3</color>
+    <color name="map_bottom_line">#b1b1b1</color>
+    <color name="map_bottom_pop">#1491c5</color>
+    <color name="myctrip_loginout_bg">#fc6712</color>
+    <color name="myctrip_loginout_bg_press">#b0480d</color>
+    <color name="global_flight_bg">#FFFEEC</color>
+    <color name="blue_bg">#3da9d8</color>
+    <color name="black_bg_a50">#80000000</color>
+    <color name="gray_bg">#e7e7e7</color>
+    <color name="bg_sort_bar">#f5f5f5</color>
+    <color name="bg_sort_bar_flight">#f4f4f4</color>    
+    <color name="bg_lowprice_bar">#f7f7f7</color>
+    <color name="bg_sort_bar_line">#e4e4e4</color>
+    <color name="global_go_info_bg">#fffaec</color>
+    <color name="hotel_order_people">#fff9e6</color>
+    <color name="text_sort_pressed">#1491c5</color>
+    <color name="text_sort_normal">#666666</color>
+     <color name="text_sort_normalv2">#b2ffffff</color>
+     <color name="text_sort_pressedv2">#30a8ff</color>
+     <color name="text_sort_selectedv2">#30a8ff</color>
+     <color name="hotel_filter_line">#dddddd</color>
+    
+    
+    <color name="text_sort_selected">#1491c5</color>
+    <color name="text_sort_disable">#cccccc</color>
+    <color name="bg_freetrip_pop_sort">#b0000000</color>
+    <color name="highligt_color">#fff9e6</color>
+
+    <drawable name="seat_item_press">#ff2c2c2c</drawable>
+    <drawable name="seat_item_nor">#00000000</drawable>
+
+    <color name="ticket_detail_qr_text">#99000000</color>
+    <!-- home icon color -->
+    <color name="home_color_plane">#3D98FF</color>
+    <color name="home_color_plane_message">#FF9914</color>
+    <color name="home_color_train">#8A95FF</color>
+    <color name="home_color_car">#3D84FF</color>
+    <color name="home_color_bus">#82A8FF</color>
+    <color name="home_color_hotel">#FF6073</color>
+    <color name="home_color_groupon">#FF7081</color>
+    <color name="home_color_weekend">#62C500</color>
+    <color name="text_dialog_title">#1490c5</color>
+    <color name="home_color_tickets">#84D018</color>
+    <color name="home_color_seller">#FF8A44</color>
+    <color name="home_color_travel">#22AC38</color>
+    <color name="home_color_local">#5ebe00</color>
+    <color name="home_color_wealth">#ff9f08</color>
+    <color name="home_color_more">#ffb517</color>
+    <color name="home_color_grouptours">#8ACA00</color>
+    <color name="home_color_freewalker">#BCD60F</color>
+    <color name="home_color_cruise">#3DBA00</color>
+    <color name="home_color_luxurious">#00CAA2</color>
+    <color name="home_color_visa">#51D700</color>
+    <color name="home_color_company">#34CFCD</color>
+    <color name="home_color_scarebuying">#F8C600</color>
+    <color name="home_color_business">#52D1FB</color>
+    <color name="home_color_selectedmerchant">#ff9966</color>
+
+    <!-- 旅行日程 -->
+    <color name="travel_schedule_card_devider_line">#e4e4e4</color>
+    <color name="bg_voice_pressed">#c6c6c6</color>
+    <color name="filter_price_stat_text_selected">#ffffff</color>
+    <color name="filter_price_stat_text_normal">#666666</color>
+    <color name="group_order_detail_coupon">#389adb</color>
+    <color name="group_order_detail_coupon_used">#adadad</color>
+    <color name="poi_book_ticket">#ff9913</color>
+    <color name="pay_agreement">#1491cf</color>
+   
+    <!-- 5.6游记优化 -->
+    <color name="itinery_bottom_lab_unpublished">#f86f7a</color>
+    <color name="itinery_bottom_lab_needmodify">#ae75d9</color>
+    <color name="itinery_bottom_lab_auditing">#17934b</color>
+    <color name="itinery_bottom_lab_beautiful">#33c1fd</color>
+	<color name="itinery_bottom_lab_archives">#9978b2</color>
+	<color name="itinery_bottom_lab_practical">#33ba4f</color>
+	<color name="itinery_bottom_lab_essence">#f86f7a</color>
+	
+	<color name="itinery_submit_disable">#fdb711</color>
+	<color name="itinery_submit_normal">#fc8713</color>
+	<color name="itinery_submit_pressed">#b15e0e</color>
+	
+	<color name="comment_select_btn">#099fde</color>
+
+	<drawable name="hotel_comment_editor_bg_pressed">#50000000</drawable>
+	<drawable name="hotel_comment_editor_bg_normal">#00000000</drawable>
+
+    <drawable name="hotel_city_item_text_normal">#666666</drawable>
+    <drawable name="hotel_city_item_text_selected">#099fde</drawable>
+    <color name="hotel_gloabal_city_promotion">#25b5ff</color>
+
+	<color name="flight_single_choice_selected">#099fde</color>
+	<color name="flight_single_choice_unselected">#e5000000</color>
+	<color name="flight_list_selected_bar">#37424f</color>
+	<color name="flight_no_result_unselected">#f0f0f0</color>
+	<color name="flight_segment_bg">#fafdfe</color>
+	<color name="global_flight_segment_bg">#f9f9f9</color>
+
+    <!-- ============= 我携 ============= -->
+    <!-- Common -->
+    <color name="light_gray5">#E4E4E4</color>
+    <color name="light_orange">#FBF4DB</color>
+    
+    <!-- 扫一扫 -->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    
+   <!-- 侧边栏分割线颜色 -->
+   <color name="sidebar_slide_color">#1affffff</color>
+   <color name="sidebar_bg_color">#e52d3846</color>
+   <color name="sidebar_selected_color">#80000000</color>
+	
+      	<!-- Notification -->
+	<color name="notify_bg">#267ae4</color>
+	<color name="notify_content">#999999</color>
+	<color name="notify_title_notice">#80d9ff</color>
+	<color name="notify_content_notice">#80d9ff</color>
+	<color name="notify_border_0">#54687B</color>
+	<color name="notify_border_1">#354656</color>
+	<color name="notify_content_bg">#F2283847</color>
+	
+	<color name="hotel_facility">#f6f6f6</color>
+	<color name="hotel_top_info">#e6283847</color>
+	<color name="gs_transparent">#B0000000</color>
+
+	<color name="hotel_coupon_nopress">#52bce8</color>
+	<color name="hotel_coupon_press">#3983a2</color>
+	<color name="hotel_dialog_half">#ef000000</color>
+	<color name="hotel_list_search_input">#e6f0f7</color>
+
+	<color name="hotel_title_disable">#a5d3ef</color>
+	<color name="hotel_addtion_comment_bg">#e9f6fc</color>
+	<color name="hotel_reply_bg">#f3f3f3</color>
+    <color name="refresh_bg">#efefef</color>
+    <color name="default_load_text_color">#cccccc</color>
+    <color name="load_bg_color">#e9e9e9</color>
+    <color name="hotel_city_select_special_white_bg">#ffffff</color>
+    <color name="hotel_city_item_title_line">#bcbcbc</color>
+    <color name="hotel_city_item_title_bg">#efefef</color>
+    <color name="hotel_city_right_index_color">#099fde</color>
+    
+       <!-- 从5.8开始所有的color资源放到此文件下 -->
+    <color name="color_ffcccccc">#ffcccccc</color>
+    <color name="color_ff333333">#ff333333</color>
+    <color name="color_ff707070">#ff707070</color>
+    <color name="color_ffffffff">#ffffffff</color>
+    <color name="color_00000000">#00000000</color>
+    <color name="color_ff000000">#ff000000</color>
+    <color name="color_ff666666">#ff666666</color>
+    <color name="color_ffeaeaea">#ffeaeaea</color>
+    <color name="color_ff1490c5">#ff1490c5</color>
+    <color name="color_ff29b9f5">#ff29b9f5</color>
+    <color name="color_ff58a7ff">#ff58a7ff</color>
+    <color name="color_ffe0e0e0">#ffe0e0e0</color>
+    <color name="color_fff64747">#fff64747</color>
+    <color name="color_fffdfdf9">#fffdfdf9</color>
+    <color name="color_fffffde3">#fffffde3</color>
+    <color name="color_fff3f3f3">#fff3f3f3</color>
+    <color name="color_fff5f5f5">#fff5f5f5</color>
+    <color name="color_ffd5d6cd">#ffd5d6cd</color>
+    <color name="color_fff8f8f8">#fff8f8f8</color>
+    <color name="color_66000000">#66000000</color>
+    <color name="color_ff199ad0">#ff199ad0</color>
+    <color name="color_fffafcfc">#fffafcfc</color>
+    <color name="color_ff22b9eb">#ff22b9eb</color>
+    <color name="color_ffeef2f2">#ffeef2f2</color>
+    <color name="color_ffe3e4e4">#ffe3e4e4</color>
+    <color name="color_fffbc83d">#fffbc83d</color>
+    <color name="color_ffb4b4b4">#ffb4b4b4</color>
+    <color name="color_ff525252">#ff525252</color>
+    <color name="color_ff5d5d5d">#ff5d5d5d</color>
+    <color name="color_ffaeaeae">#ffaeaeae</color>
+    <color name="color_ffb9b9b9">#ffb9b9b9</color>
+    <color name="color_ff434343">#ff434343</color>
+    <color name="np_numberpicker_selection_divider">#1e90ff</color>
+
+
+    <!-- begin 60% 99 -->
+    <color name="color_99ffffff">#99ffffff</color>
+    <color name="color_99000000">#99000000</color>
+    <!-- end 60% 99 -->
+
+
+    <!-- begin 80% cc -->
+    <color name="color_cc000000">#cc000000</color>
+    <color name="color_ccffffff">#ccffffff</color>
+    <color name="color_cc333333">#cc333333</color>
+    <!-- end 80% cc -->
+
+
+    <!-- begin 90% e6 -->
+    <color name="color_e6ffffff">#e6ffffff</color>
+    <color name="color_e6000000">#e6000000</color>
+    <!-- end 90% e6 -->
+
+
+    <!-- 60%透明 -->
+    <color name="color_29b9f5">#29b9f5</color>
+    <!-- 20%透明 -->
+    <color name="color_18000000">#18000000</color>
+    <!-- 10%透明 -->
+    <color name="color_0c000000">#0c000000</color>
+    <color name="color_0cffffff">#0cffffff</color>
+
+    <color name="color_434343">#434343</color>
+    <color name="color_b9b9b9">#b9b9b9</color>
+    <color name="color_5d5d5d">#5d5d5d</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="ui_edit_hint_return_ticket">#b8b8b8</color>
+    <color name="ui_edit_hint">#cccccc</color>
+    <color name="ui_bg_divider">#e4e4e4</color>
+    <color name="ui_bg_divider2">#1a1a1a</color>
+    <color name="ui_bg_divider3">#dbdee0</color>
+    <color name="ui_bg_divider4">#ffccee</color>
+    <color name="ui_bg_divider5">#dfdfdf</color>
+    <color name="ui_bg_divider6">#bcbcbc</color>
+    <color name="ui_bg_divider7">#f4f4f4</color>
+    <color name="ui_bg_divider8">#ffc068</color>
+    <color name="ui_bg_divider9">#e8e8e8</color>
+    <color name="black_a30">#4d000000</color>
+    <color name="main_bg_new">#FFFFFF</color>
+    <color name="main_bg">#F5F5F5</color>
+    <color name="main_bg_pay">#efefef</color>
+    <color name="tab_item_selected_color">#1491C5</color>
+    <color name="tab_item_normal_color">#666666</color>
+    <color name="tab_item_light_normal_color">#999999</color>
+    <color name="share_button_text_color"> #333333</color>
+    <color name="share_dialog_bg_color">#dadada</color>
+
+    <color name="background_custom_dialog">#C0000000</color>
+
+</resources>

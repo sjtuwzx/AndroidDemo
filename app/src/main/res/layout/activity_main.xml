@@ -1,0 +1,117 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF000000"
+        android:textSize="20dp"
+        android:visibility="gone"/>
+
+    <ImageView android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_launcher"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+    <com.wzx.android.demo.pinnedHeader.PinnedDragableHeaderListView
+          android:id="@+id/list"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@android:color/white"/>
+
+    <com.wzx.android.demo.HotelAutoScaleTextView
+        android:id="@+id/auto_scale_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:textColor="#ff000000"
+        app:textSize="16dp"
+        app:constantText="当前城市没有符合要求的酒店，以下是为您显示临近城市&#034;{auto_scale}&#034;酒店酒店酒酒店酒店酒店酒店酒店酒店酒:"
+        app:autoText="房型弹窗内酒店基础信息部分"
+        app:max_line="2"
+        app:min_auto_scale_char="3"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.wzx.android.demo.HotelFilterLayout
+            android:id="@+id/filter_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:horizontal_spacing="20dp"
+            app:vertical_spacing="10dp"
+            app:max_line="2"
+            app:paddingLastLineEnd="24dp"
+            app:autoStretchChildren="true"
+            android:background="#ffff00">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:text="1"/>
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="2" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="3" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="4" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="5" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="6" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:text="7" />
+
+            <Button android:id="@+id/btn_preference"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="8" />
+
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:text="9" />
+        </com.wzx.android.demo.HotelFilterLayout>
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right|bottom"
+            android:background="#ff0000" />
+    </FrameLayout>
+
+    <!--<com.wzx.android.demo.pinnedHeader.PinnedDoubleHeaderListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" />-->
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ctrip.android.hotel.filter.TreeListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:cacheColorHint="#00000000"
+    android:listSelector="@drawable/hotel_tree_list_selector"
+    android:scrollbars="none" />

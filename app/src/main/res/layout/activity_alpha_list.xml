@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hotel_bg_abroad"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:background="@android:color/white">
+
+        <View
+            android:id="@+id/order_success_anim"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView android:id="@+id/order_success_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:textColor="#099fde"
+            android:text="订单提交成功"/>
+    </LinearLayout>
+
+    <SeekBar android:id="@+id/seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="1000"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/test"/>
+
+    <ImageView android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <com.wzx.android.demo.AnimationListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="200dp"/>
+
+</LinearLayout>

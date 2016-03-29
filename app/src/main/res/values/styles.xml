@@ -1,0 +1,67 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="text_15_ff9a14">
+        <item name="android:textSize">15dip</item>
+        <item name="android:textColor">#ff9a14</item>
+    </style>
+
+    <style name="text_15_ff9a14_b">
+        <item name="android:textSize">15dip</item>
+        <item name="android:textColor">#ff9a14</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="CustomDialog" parent="@android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+    <style name="text_10_bcbcbc_b">
+        <item name="android:textSize">10dip</item>
+        <item name="android:textColor">#bcbcbc</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_18_0065ca_b">
+        <item name="android:textSize">18dip</item>
+        <item name="android:textColor">#0065ca</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_14_ff9913">
+        <item name="android:textSize">14dip</item>
+        <item name="android:textColor">#ff9913</item>
+    </style>
+
+    <style name="text_18_ff9913_b">
+        <item name="android:textSize">18dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ff9913</item>
+    </style>
+
+    <style name="text_18_1084bc">
+        <item name="android:textSize">18dip</item>
+        <item name="android:textColor">#1084bc</item>
+    </style>
+
+</resources>
