@@ -59,13 +59,11 @@
         android:layout_height="wrap_content"
         android:background="#FF00FF00"
         android:padding="10dp"
-        app:child_height="100dp"
-        app:child_width="100dp"
         app:column_count="4"
         app:dividerColor="@android:color/holo_red_light"
         app:dividerSize="1dp"
         app:drawEdge="true"
-        app:drawable_vertical_padding="5dp"
+        app:divider_vertical_padding="5dp"
         app:horizontal_spacing="10dp"
         app:vertical_spacing="10dp" />
 

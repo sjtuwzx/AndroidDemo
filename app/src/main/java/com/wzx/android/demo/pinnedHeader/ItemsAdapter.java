@@ -172,12 +172,17 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		}
 
 		@Override
+		public int getItemViewType(int position) {
+			return position;
+		}
+
+		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			if (convertView == null) {
 				convertView = mInflater.inflate(R.layout.image_item, parent, false);
-				
-			} 
+			}
+
 			return convertView;
 		}
 		
@@ -192,8 +197,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 			mInflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		}
-
-
 
 		@Override
 		public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {

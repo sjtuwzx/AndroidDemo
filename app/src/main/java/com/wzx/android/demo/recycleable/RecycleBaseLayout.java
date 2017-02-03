@@ -3,6 +3,7 @@ package com.wzx.android.demo.recycleable;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.util.AttributeSet;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -14,11 +15,9 @@ import java.util.ArrayList;
  */
 public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClickListener {
 
-    private static final LayoutParams DEFAULT_LAYOUT_PARAMS = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
     private ListAdapter mAdapter;
     private AdapterDataSetObserver mDataSetObserver = new AdapterDataSetObserver();
-    private RecycleBaseLayout.RecycleBin mRecycleBin = new RecycleBaseLayout.RecycleBin();
+    private RecycleBin mRecycleBin = new RecycleBin();
 
     public RecycleBaseLayout(Context context) {
         super(context);
@@ -50,6 +49,12 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
     }
 
     public void setAdapter(ListAdapter adapter) {
+        if (mAdapter == adapter) {
+            return;
+        }
+        mRecycleBin.clear();
+        removeAllViews();
+
         if (mAdapter != null && mDataSetObserver != null) {
             mAdapter.unregisterDataSetObserver(mDataSetObserver);
         }
@@ -64,25 +69,27 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
         removeAllChildren();
         if (mAdapter != null) {
             int childCount = mAdapter.getCount();
-            for (int i = 0; i < childCount; i++) {
-                View scrapView = mRecycleBin == null ? null : mRecycleBin
-                        .getScrapView();
-                View childView = mAdapter.getView(i, scrapView, this);
-                childView.setOnClickListener(this);
+            for (int position = 0; position < childCount; position++) {
+                View child = obtainView(position);
 
-                LayoutParams layoutParams = childView.getLayoutParams();
-                if (layoutParams == null) {
-                    layoutParams = DEFAULT_LAYOUT_PARAMS;
-                }
-                addViewInLayout(childView, -1, layoutParams);
-
-                if (scrapView != null && scrapView != childView) {
-                    mRecycleBin.addScrapView(scrapView);
-                }
+                addView(child, -1);
             }
         }
-        requestLayout();
-        invalidate();
+    }
+
+    private View obtainView(int position) {
+        int viewType = mAdapter.getItemViewType(position);
+        View scrapView = mRecycleBin == null ? null
+                : mRecycleBin .getScrapView(viewType);
+        View child = mAdapter.getView(position, scrapView, this);
+        setItemViewLayoutParams(child, position);
+        child.setOnClickListener(this);
+
+        if (scrapView != null && scrapView != child) {
+            mRecycleBin.addScrapView(scrapView);
+        }
+
+        return child;
     }
 
     protected void removeAllChildren() {
@@ -92,36 +99,128 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
             for (int i = 0; i < N; i++) {
                 View child = getChildAt(i);
                 child.setOnClickListener(null);
+
                 mRecycleBin.addScrapView(child);
             }
         }
-        removeAllViewsInLayout();
+        removeAllViews();
     }
 
-    public void setRecycleBin(RecycleBaseLayout.RecycleBin recycleBin) {
+    private void setItemViewLayoutParams(View child, int position) {
+        final ViewGroup.LayoutParams vlp = child.getLayoutParams();
+        LayoutParams lp;
+        if (vlp == null) {
+            lp = (LayoutParams) generateDefaultLayoutParams();
+        } else if (!checkLayoutParams(vlp)) {
+            lp = (LayoutParams) generateLayoutParams(vlp);
+        } else {
+            lp = (LayoutParams) vlp;
+        }
+
+        lp.mViewType = mAdapter.getItemViewType(position);
+        if (lp != vlp) {
+            child.setLayoutParams(lp);
+        }
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        return new RecycleBaseLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 0);
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        return new LayoutParams(p);
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        return p instanceof LayoutParams;
+    }
+
+    public static class LayoutParams extends ViewGroup.LayoutParams {
+
+        int mViewType;
+
+        public LayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
+        }
+
+        public LayoutParams(int w, int h) {
+            super(w, h);
+        }
+
+        public LayoutParams(int w, int h, int viewType) {
+            super(w, h);
+            mViewType = viewType;
+        }
+
+        public LayoutParams(ViewGroup.LayoutParams source) {
+            super(source);
+        }
+
+    }
+
+    public void setRecycleBin(RecycleBin recycleBin) {
         if (recycleBin == null || mRecycleBin == recycleBin) {
             return;
         }
-        View scrap;
-        while ((scrap = mRecycleBin.getScrapView()) != null) {
-            recycleBin.addScrapView(scrap);
-        }
+        mRecycleBin.into(recycleBin);
+        mRecycleBin.clear();
         mRecycleBin = recycleBin;
     }
 
     public static class RecycleBin {
 
-        private ArrayList<View> mScrapViewList = new ArrayList<View>();
+        private SparseArray<ArrayList<View>> mScrapViewsMap = new SparseArray<ArrayList<View>>();
 
-        View getScrapView() {
-            if (mScrapViewList.size() > 0) {
-                return mScrapViewList.remove(0);
+        private View getScrapView(int viewType) {
+            if (viewType >= 0) {
+                ArrayList<View> scrapViews = mScrapViewsMap.get(viewType);
+                if (scrapViews != null && scrapViews.size() > 0) {
+                    return scrapViews.remove(0);
+                }
             }
             return null;
         }
 
-        void addScrapView(View scrap) {
-            mScrapViewList.add(scrap);
+        private void addScrapView(View scrap) {
+            final LayoutParams lp = (LayoutParams) scrap.getLayoutParams();
+            if (lp == null) {
+                return;
+            }
+            int viewType = lp.mViewType;
+            addScrapView(scrap, viewType);
+        }
+
+        private void addScrapView(View scrap, int viewType) {
+            if (viewType >= 0) {
+                if (mScrapViewsMap.indexOfKey(viewType) < 0) {
+                    mScrapViewsMap.put(viewType, new ArrayList<View>());
+                }
+                ArrayList<View> scrapViews = mScrapViewsMap.get(viewType);
+                scrapViews.add(scrap);
+            }
+        }
+
+        private void clear() {
+            mScrapViewsMap.clear();
+        }
+
+        private void into(RecycleBin recycleBin) {
+            for (int i = 0, size = mScrapViewsMap.size(); i < size; i++) {
+                int viewType = mScrapViewsMap.keyAt(i);
+                ArrayList<View> scrapViews = mScrapViewsMap.get(viewType);
+                for (View scrap : scrapViews) {
+                    recycleBin.addScrapView(scrap, viewType);
+                }
+            }
         }
     }
 

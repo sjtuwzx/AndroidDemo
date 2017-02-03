@@ -7,13 +7,13 @@ import android.widget.BaseAdapter;
 /**
  * Created by wang_zx on 2016/1/9.
  */
-public abstract class HotelExpandControlBaseAdapter extends BaseAdapter {
+public abstract class HotelAutoCollapseAdapter extends BaseAdapter {
 
     private BaseAdapter mAdapter;
     private int mMinItemCount;
     protected boolean mExpanded = false;
 
-    public HotelExpandControlBaseAdapter(BaseAdapter adapter, int minItemCount, boolean expanded) {
+    public HotelAutoCollapseAdapter(BaseAdapter adapter, int minItemCount, boolean expanded) {
         mAdapter = adapter;
         mMinItemCount = minItemCount;
         mExpanded = expanded ;
@@ -41,7 +41,11 @@ public abstract class HotelExpandControlBaseAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        if (position < mMinItemCount || mExpanded && position < mAdapter.getCount()) {
+            return mAdapter.getItemId(position);
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -63,9 +67,9 @@ public abstract class HotelExpandControlBaseAdapter extends BaseAdapter {
         if (position < mMinItemCount || mExpanded && position < mAdapter.getCount()) {
             return mAdapter.getView(position, convertView, parent);
         } else {
-            return getBottomControllerView(position, convertView, parent, mExpanded);
+            return getControllerView(position, convertView, parent, mExpanded);
         }
     }
 
-    public abstract View getBottomControllerView(int position, View convertView, ViewGroup parent, boolean expanded);
+    public abstract View getControllerView(int position, View convertView, ViewGroup parent, boolean expanded);
 }

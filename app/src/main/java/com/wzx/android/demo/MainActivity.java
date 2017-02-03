@@ -6,14 +6,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-import com.wzx.android.demo.pinnedHeader.HotelExpandControlAdapter;
+import com.wzx.android.demo.pinnedHeader.HotelDemoAutoCollapseAdapter;
 import com.wzx.android.demo.pinnedHeader.ItemsAdapter;
 import com.wzx.android.demo.pinnedHeader.SectionedListAdapter.AdapterInfo;
 import com.wzx.android.demo.pinnedHeader.PinnedDragableHeaderListView;
 import com.wzx.android.demo.pinnedHeader.SectionedListCommonAdapter;
-import com.wzx.android.demo.utils.FieldUtils;
 import com.wzx.android.demo.v2.R;
 
 import android.animation.Animator;
@@ -34,10 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Context;
 import android.os.Bundle;
@@ -245,7 +240,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
         }
         adapter.setData(data);
         AdapterInfo adapterInfo = new AdapterInfo.Builder()
-                .setAdapter(new HotelExpandControlAdapter(this, mAdapter, adapter, 5, false)).setHeaderCreator(new SimpleHeaderCreator(index)).setShouldPinHeader(true).create();
+                .setAdapter(new HotelDemoAutoCollapseAdapter(this, mAdapter, adapter, 5, false)).setHeaderCreator(new SimpleHeaderCreator(index)).setShouldPinHeader(true).create();
 
         mAdapter.addAdapterInfo(adapterInfo);
     }

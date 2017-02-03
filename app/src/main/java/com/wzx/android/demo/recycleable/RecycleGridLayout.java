@@ -88,22 +88,28 @@ public class RecycleGridLayout extends RecycleBaseLayout {
                 columnHeight = 0;
             }
             View child = getChildAt(i);
-            child.measure(MeasureSpec.makeMeasureSpec(measuredWidth - hPadding, MeasureSpec.AT_MOST), MeasureSpec.UNSPECIFIED);
 
-            int childWidth = mChildWidth > 0 ? mChildWidth : child.getMeasuredWidth();
-            int childHeight = mChildHeight > 0 ? mChildHeight : child.getMeasuredHeight();
-
-            int childHorizontalSpace = measuredWidth - hPadding
-                    - mHorizontalSpacing * (mColumnCount - 1);
-            if (mColumnCount > 0
-                    && childWidth * mColumnCount > childHorizontalSpace) {
+            LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, hPadding, lp.width);
+            if (mChildWidth > 0) {
+                childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(mChildWidth, MeasureSpec.EXACTLY);
+            }
+            int childHorizontalSpace = measuredWidth - hPadding - mHorizontalSpacing * (mColumnCount - 1);
+            int childWidth = MeasureSpec.getSize(childWidthMeasureSpec);
+            if (mColumnCount > 0 && childWidth * mColumnCount > childHorizontalSpace) {
                 childWidth = childHorizontalSpace / mColumnCount;
+                childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(childWidth,
+                        MeasureSpec.getMode(childWidthMeasureSpec));
             }
 
-            child.measure(makeMeasureSpec(childWidth, MeasureSpec.EXACTLY),
-                    makeMeasureSpec(childHeight, MeasureSpec.EXACTLY));
+            int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, vPadding, lp.height);
+            if (mChildHeight > 0) {
+                childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(mChildHeight, MeasureSpec.EXACTLY);
+            }
 
-            columnHeight = Math.max(columnHeight, childHeight);
+            child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+
+            columnHeight = Math.max(columnHeight, child.getMeasuredHeight());
 
         }
 

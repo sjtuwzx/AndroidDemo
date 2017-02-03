@@ -116,11 +116,14 @@ public class AnimationListViewActivity extends Activity{
                 ObjectAnimator rotateAnimator2 = ObjectAnimator.ofFloat(mOrderSuccessText, "rotationX", 90.0f, 0.0f);
                 rotateAnimator2.setDuration(500);
 
+                rotateAnimator2.setRepeatCount(Integer.MAX_VALUE);
 
 
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.playSequentially(tickAnimator, emptyAnimator, textAnimator, rotateAnimator, rotateAnimator2);
                 animatorSet.start();
+
+
 
                /* List<HotelStatusItemModel> data = new ArrayList<HotelStatusItemModel>();
                 for (int i = 0; i < 30; i++) {

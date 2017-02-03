@@ -1,12 +1,7 @@
 package com.wzx.android.demo;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
-import android.view.View;
 
 import com.wzx.android.demo.v2.R;
 

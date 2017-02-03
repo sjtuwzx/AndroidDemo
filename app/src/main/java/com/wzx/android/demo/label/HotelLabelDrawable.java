@@ -4,7 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
@@ -166,6 +169,10 @@ public class HotelLabelDrawable extends Drawable {
     public void draw(Canvas canvas) {
         canvas.save();
         Rect bounds = getBounds();
+        Path path = new Path();
+        path.addRoundRect(new RectF(bounds), mLabelRadius, mLabelRadius, Path.Direction.CW);
+        canvas.clipPath(path);
+
         canvas.translate(bounds.left, bounds.top);
 
         float mainLabelWidth = drawSingleLabel(canvas, mMainTextLayout, mMainBackgroundPaint);
@@ -203,7 +210,8 @@ public class HotelLabelDrawable extends Drawable {
         float halfStrokeWidth = mFramePaint.getStrokeWidth() / 2;
         RectF rectF = new RectF(halfStrokeWidth, halfStrokeWidth, with - halfStrokeWidth, height - halfStrokeWidth);
 
-        canvas.drawRoundRect(rectF, mLabelRadius, mLabelRadius, paint);
+        canvas.drawRect(rectF, paint);
+
     }
 
     private void drawFrame(Canvas canvas, boolean drawDivider, float dividerX) {

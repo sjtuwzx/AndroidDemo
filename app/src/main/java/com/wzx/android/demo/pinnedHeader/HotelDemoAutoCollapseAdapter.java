@@ -12,19 +12,19 @@ import com.wzx.android.demo.v2.R;
 /**
  * Created by wang_zx on 2016/1/9.
  */
-public class HotelExpandControlAdapter extends HotelExpandControlBaseAdapter implements View.OnClickListener {
+public class HotelDemoAutoCollapseAdapter extends HotelAutoCollapseAdapter implements View.OnClickListener {
 
     private BaseAdapter mParentAdapter;
     private LayoutInflater mInflater;
 
-    public HotelExpandControlAdapter(Context context, BaseAdapter parentAdapter, BaseAdapter adapter, int minItemCount, boolean expanded) {
+    public HotelDemoAutoCollapseAdapter(Context context, BaseAdapter parentAdapter, BaseAdapter adapter, int minItemCount, boolean expanded) {
         super(adapter, minItemCount, expanded);
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mParentAdapter = parentAdapter;
     }
 
     @Override
-    public View getBottomControllerView(int position, View convertView, ViewGroup parent, boolean expanded) {
+    public View getControllerView(int position, View convertView, ViewGroup parent, boolean expanded) {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.adapter_expand_controller, parent, false);
         }

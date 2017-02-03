@@ -15,12 +15,18 @@ public class PinnedHeaderTouchHelper {
     private static final String TAG = PinnedHeaderTouchHelper.class.getSimpleName();
 
     private View mOwner;
+    private boolean mIsScrollableOwner = true;
     private boolean mHasTouchPinnedHeader = false;
 
     private boolean mShouldDelayChildPressedState = true;
 
     public PinnedHeaderTouchHelper(View owner) {
+        this(owner, true);
+    }
+
+    public PinnedHeaderTouchHelper(View owner, boolean isScrollableOwner) {
         mOwner = owner;
+        mIsScrollableOwner = isScrollableOwner;
     }
 
     public void reset() {
@@ -37,6 +43,9 @@ public class PinnedHeaderTouchHelper {
         if (mOwner == null || header == null) {
             return false;
         }
+
+        Rect dirtyRect = new Rect(headerRect);
+        dirtyRect.offset(mOwner.getScrollX(), mOwner.getScrollY());
 
         int x = (int) ev.getX();
         int y = (int) ev.getY();
@@ -60,22 +69,22 @@ public class PinnedHeaderTouchHelper {
 
             if (action == MotionEvent.ACTION_DOWN
                     || action == MotionEvent.ACTION_POINTER_DOWN) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-                    mOwner.invalidate(headerRect);
+                if (mIsScrollableOwner && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                    mOwner.invalidate(dirtyRect);
                 } else {
-                    mOwner.postInvalidateDelayed(ViewConfiguration.getTapTimeout(), headerRect.left, headerRect.top, headerRect.right,
-                            headerRect.bottom);
+                    mOwner.postInvalidateDelayed(ViewConfiguration.getTapTimeout(), dirtyRect.left, dirtyRect.top, dirtyRect.right,
+                            dirtyRect.bottom);
                 }
             } else if (action == MotionEvent.ACTION_UP
                     || action == MotionEvent.ACTION_POINTER_UP) {
                 // 点击事件完成后再刷新
-                int delayMs = Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH ? 0 : ViewConfiguration
+                int delayMs = mIsScrollableOwner && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH ? 0 : ViewConfiguration
                         .getPressedStateDuration();
-                mOwner.postInvalidateDelayed(delayMs, headerRect.left, headerRect.top, headerRect.right,
-                        headerRect.bottom);
+                mOwner.postInvalidateDelayed(delayMs, dirtyRect.left, dirtyRect.top, dirtyRect.right,
+                        dirtyRect.bottom);
             } else if (action == MotionEvent.ACTION_MOVE
                     || action == MotionEvent.ACTION_CANCEL) {
-                mOwner.invalidate(headerRect);
+                mOwner.invalidate(dirtyRect);
             }
             return true;
         }
@@ -88,7 +97,7 @@ public class PinnedHeaderTouchHelper {
             header.dispatchTouchEvent(event);
             event.recycle();
 
-            mOwner.invalidate(headerRect);
+            mOwner.invalidate(dirtyRect);
         }
         return false;
     }

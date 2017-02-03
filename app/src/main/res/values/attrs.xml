@@ -38,7 +38,7 @@
         <attr name="dividerColor" />
         <attr name="dividerSize" />
         <attr name="drawEdge"/>
-        <attr name="drawable_vertical_padding" format="dimension|reference" />
+        <attr name="divider_vertical_padding" format="dimension|reference" />
     </declare-styleable>
 
     <attr name="max_collapse_line" format="integer" />
@@ -92,6 +92,10 @@
         <attr name="dividerPaddingEnd" format="dimension|reference" />
     </declare-styleable>
 
+    <declare-styleable name="DividerLinearLayout_layout">
+        <attr name="ignore" format="boolean|reference" />
+    </declare-styleable>
+
     <declare-styleable name="HotelFilterLayout">
         <attr name="max_line"/>
         <attr name="horizontal_spacing" />
@@ -102,6 +106,12 @@
 
     <declare-styleable name="HotelLabelView">
         <attr name="horizontal_spacing" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelVerticalLabelView">
+        <attr name="vertical_spacing" />
+        <attr name="child_width"/>
+        <attr name="child_height"/>
     </declare-styleable>
 
     <declare-styleable name="FilterSectionView">
@@ -121,5 +131,22 @@
         <attr name="remove_button_id" format="reference" />
         <attr name="remove_animator_duration" format="integer|reference" />
     </declare-styleable>
+
+    <declare-styleable name="HotelLabelLayout">
+        <attr name="horizontal_spacing"/>
+    </declare-styleable>
+
+    <declare-styleable name="ColorFilterImageView">
+        <attr name="filter_color" format="color|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="TintDrawableTextView">
+        <attr name="drawable_tint_color" format="color|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="StickyScrollDescendantView">
+        <attr name="content_id" format="reference" />
+    </declare-styleable>
+
 
 </resources>

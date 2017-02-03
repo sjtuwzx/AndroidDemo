@@ -25,7 +25,7 @@ public class HotelInvoicePostDialog extends HotelCustomDialogFragment {
         ListView listView = (ListView)view.findViewById(R.id.list);
         ItemsAdapter adapter = new ItemsAdapter(getActivity());
         listView.setAdapter(adapter);
-        List<String> items = new ArrayList<>();
+        List<String> items = new ArrayList<String>();
         for (int i = 0; i < 30; i++) {
             items.add("item[" + (i + 1) + "]");
         }

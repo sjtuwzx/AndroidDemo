@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -30,8 +31,9 @@ public class SmartGridLayout extends RecycleBaseLayout {
     private int mDividerColor;
     private int mDividerSize;
     private boolean mDrawEdge = false;
-    private int mDrawableVerticalPadding = 0;
+    private int mDividerVerticalPadding = 0;
 
+    private ArrayMap<Integer, Integer[]> mLayoutConfigures = new ArrayMap<Integer, Integer[]>();
 
     public SmartGridLayout(Context context) {
         this(context, null);
@@ -52,12 +54,20 @@ public class SmartGridLayout extends RecycleBaseLayout {
         mDividerColor = a.getColor(R.styleable.SmartGridLayout_dividerColor, Color.TRANSPARENT);
         mDividerSize = a.getDimensionPixelSize(R.styleable.SmartGridLayout_dividerSize, 0);
         mDrawEdge = a.getBoolean(R.styleable.SmartGridLayout_drawEdge, false);
-        mDrawableVerticalPadding = a.getDimensionPixelSize(R.styleable.SmartGridLayout_drawable_vertical_padding, 0);
+        mDividerVerticalPadding = a.getDimensionPixelSize(R.styleable.SmartGridLayout_divider_vertical_padding, 0);
 
         a.recycle();
 
         mPaint.setColor(mDividerColor);
         mPaint.setStrokeWidth(mDividerSize);
+    }
+
+    public void addLayoutConfigure(int childrenCount, Integer[] configure) {
+        mLayoutConfigures.put(childrenCount, configure);
+    }
+
+    public void clearLayoutConfigure() {
+        mLayoutConfigures.clear();
     }
 
     @Override
@@ -74,7 +84,7 @@ public class SmartGridLayout extends RecycleBaseLayout {
         int width = MeasureSpec.getSize(widthMeasureSpec);
 
         mViewLines.clear();
-        int[] lineChildCounts = calculateChildCountForLines(getChildCount(), mColumnCount);
+        Integer[] lineChildCounts = calculateChildCountForLines(getChildCount());
         int childIndexOffset = 0;
         int lineTop = paddingTop;
         for (int lineChildCount : lineChildCounts) {
@@ -92,7 +102,7 @@ public class SmartGridLayout extends RecycleBaseLayout {
                 if (i == lineChildCount - 1) {
                     childWidth = childrenHorizontalSpace - childWidth * (lineChildCount - 1);
                 }
-                child.measure(makeMeasureSpec(childWidth, MeasureSpec.EXACTLY), MeasureSpec.UNSPECIFIED);
+                measureView(child, makeMeasureSpec(childWidth, MeasureSpec.EXACTLY), MeasureSpec.UNSPECIFIED);
                 int childHeight = child.getMeasuredHeight();
                 columnHeight = Math.max(columnHeight, childHeight);
             }
@@ -106,9 +116,20 @@ public class SmartGridLayout extends RecycleBaseLayout {
         super.onMeasure(widthMeasureSpec, makeMeasureSpec(height, MeasureSpec.EXACTLY));
     }
 
-    private static int[] calculateChildCountForLines(int childCount, int columnCount) {
-        int rowCount = childCount / columnCount + +(childCount % columnCount > 0 ? 1 : 0);
-        int[] lineChildCounts = new int[rowCount];
+    private static void measureView(View view, int widthMeasureSpec, int heightMeasureSpec) {
+        LayoutParams lp = (LayoutParams) view.getLayoutParams();
+        int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
+        int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
+
+        view.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+    }
+
+    private Integer[] calculateChildCountForLines(int childCount) {
+        if (mLayoutConfigures.containsKey(childCount)) {
+            return mLayoutConfigures.get(childCount);
+        }
+        int rowCount = childCount / mColumnCount + +(childCount % mColumnCount > 0 ? 1 : 0);
+        Integer[] lineChildCounts = new Integer[rowCount];
         int minColumnCount = 0;
         int remainCount = 0;
         if (rowCount > 0) {
@@ -179,9 +200,12 @@ public class SmartGridLayout extends RecycleBaseLayout {
 
     private void drawVerticalLines(Canvas canvas) {
         int hPadding = mHorizontalSpacing / 2;
-        int vPadding = (mVerticalSpacing + mDividerSize) / 2 - mDrawableVerticalPadding;
+        int vPadding = (mVerticalSpacing + mDividerSize) / 2 - mDividerVerticalPadding;
 
         for (ViewLine line : mViewLines) {
+            if (line.height + vPadding * 2 <= 0) {
+                continue;
+            }
             List<View> children = line.children;
             int N = children.size();
             for (int i = 0; i < N - 1 || mDrawEdge && i == N - 1; i++) {
@@ -196,6 +220,7 @@ public class SmartGridLayout extends RecycleBaseLayout {
                 }
                 canvas.drawLine(right, top, right, bottom, mPaint);
             }
+
         }
     }
 

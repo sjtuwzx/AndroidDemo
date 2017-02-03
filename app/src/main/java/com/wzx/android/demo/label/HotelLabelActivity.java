@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wzx.android.demo.ChildrenLayoutObservableListView;
+import com.wzx.android.demo.HotelGoodsRecommendDrawable;
 import com.wzx.android.demo.pinnedHeader.ItemsAdapter;
 import com.wzx.android.demo.v2.R;
 
@@ -29,8 +30,7 @@ import ctrip.android.hotel.filter.DeviceInfoUtil;
 public class HotelLabelActivity extends Activity implements View.OnClickListener {
 
     private HotelLabelView mLabelView;
-
-    private HotelLabelDrawable mDrawable = new HotelLabelDrawable();
+    private HotelVerticalLabelView mVerticalLabelView;
 
     private TextView mText1;
     private TextView mText2;
@@ -43,6 +43,8 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
     private ItemsAdapter mAdapter;
 
     private HotelSpannableTextView mSpannableTextView;
+
+    private View mRecommendLabelView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,9 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
 
         mLabelView = (HotelLabelView) findViewById(R.id.label_view);
 
-        List<HotelLabelDrawable> leftLabelDrawables = new ArrayList<>();
+        mVerticalLabelView = (HotelVerticalLabelView) findViewById(R.id.vertical_label_view);
+
+        List<HotelLabelDrawable> leftLabelDrawables = new ArrayList<HotelLabelDrawable>();
         for (int i = 0; i < 10; i++) {
             HotelLabelDrawable drawable = new HotelLabelDrawable();
             HotelTagViewModel model = new HotelTagViewModel();
@@ -108,9 +112,9 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
             leftLabelDrawables.add(drawable);
         }
 
-        mLabelView.refreshLeftLabelDrawables(leftLabelDrawables);
+        mVerticalLabelView.refreshLabelDrawables(leftLabelDrawables);
 
-        List<HotelLabelDrawable> rightLabelDrawables = new ArrayList<>();
+        List<HotelLabelDrawable> rightLabelDrawables = new ArrayList<HotelLabelDrawable>();
         for (int i = 0; i < 10; i++) {
             HotelLabelDrawable drawable = new HotelLabelDrawable();
             HotelTagViewModel model = new HotelTagViewModel();
@@ -119,6 +123,7 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
             HotelTagStyleViewModel styleViewModel = new HotelTagStyleViewModel();
             styleViewModel.tagFrameColor = "#ffff0000";
             styleViewModel.tagFrameWidth = 1;
+            styleViewModel.tagCornerRadius = 5;
             model.styleViewModel = styleViewModel;
 
             HotelTagBasicViewModel mainLabelModel = new HotelTagBasicViewModel();
@@ -142,7 +147,7 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
         mLabelView.refreshRightLabelDrawables(rightLabelDrawables);
 
 
-        List<HotelLabelDrawable> priorityDisplayRightDrawables = new ArrayList<>();
+        List<HotelLabelDrawable> priorityDisplayRightDrawables = new ArrayList<HotelLabelDrawable>();
         for (int i = 0; i < 2; i++) {
             HotelLabelDrawable drawable = new HotelLabelDrawable();
             HotelTagViewModel model = new HotelTagViewModel();
@@ -151,7 +156,7 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
             HotelTagStyleViewModel styleViewModel = new HotelTagStyleViewModel();
             styleViewModel.tagFrameColor = "";
             styleViewModel.tagFrameWidth = -1.0f;
-            styleViewModel.tagCornerRadius = -1.0f;
+            styleViewModel.tagCornerRadius = 2.0f;
             model.styleViewModel = styleViewModel;
 
             HotelTagBasicViewModel mainLabelModel = new HotelTagBasicViewModel();
@@ -160,6 +165,15 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
             mainLabelModel.tagFontSize = 11.0f;
             mainLabelModel.tagBackgroundColor = "#4a81fb";
             styleViewModel.mainTagViewModel = mainLabelModel;
+
+            HotelTagBasicViewModel subLabelModel = new HotelTagBasicViewModel();
+            subLabelModel.tagTitle = "123";
+            subLabelModel.tagFontColor = "#00000000";
+            subLabelModel.tagFontSize = 11.0f;
+            subLabelModel.tagBackgroundColor = "#00000000";
+            styleViewModel.subTagViewModel = subLabelModel;
+
+            model.hasSubTitle = true;
 
 
             drawable.setLabelModel(model);
@@ -175,7 +189,10 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
                 .append("256", R.style.text_18_ff9913_b)
                 .into(mSpannableTextView);
 
-
+        mRecommendLabelView = findViewById(R.id.recommand_label);
+        HotelGoodsRecommendDrawable recommendDrawable = new HotelGoodsRecommendDrawable();
+        recommendDrawable.setText("人气特卖");
+        mRecommendLabelView.setBackgroundDrawable(recommendDrawable);
     }
 
     @Override

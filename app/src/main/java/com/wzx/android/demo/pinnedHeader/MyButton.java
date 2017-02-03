@@ -1,6 +1,7 @@
 package com.wzx.android.demo.pinnedHeader;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.Button;
 
@@ -18,7 +19,17 @@ public class MyButton extends Button{
         super.drawableStateChanged();
     }
 
-    /*/*
+	@Override
+	public void draw(Canvas canvas) {
+		super.draw(canvas);
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+	}
+
+	/*/*
 
 
 	

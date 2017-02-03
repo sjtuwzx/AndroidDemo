@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.wzx.android.demo.v2.R;
@@ -17,9 +18,9 @@ import java.util.List;
 /**
  * Created by wang_zx on 2015/7/7.
  */
-public class DividerLinearLayout extends LinearLayout implements View.OnClickListener{
+public class DividerLinearLayout extends LinearLayout {
 
-    private List<View> mVisibleChildren = new ArrayList<>();
+    private List<View> mDividerChildren = new ArrayList<>();
     private Paint mPaint = new Paint();
 
     private int mDividerColor = Color.TRANSPARENT;
@@ -52,12 +53,13 @@ public class DividerLinearLayout extends LinearLayout implements View.OnClickLis
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        mVisibleChildren.clear();
-        int N = getChildCount();
-        for (int i = 0; i < N; i++) {
+        mDividerChildren.clear();
+        int n = getChildCount();
+        for (int i = 0; i < n; i++) {
             View child = getChildAt(i);
-            if (child.getVisibility() != GONE) {
-                mVisibleChildren.add(child);
+            LayoutParams layoutParams = (LayoutParams) child.getLayoutParams();
+            if (!layoutParams.mIgnore && child.getVisibility() != GONE) {
+                mDividerChildren.add(child);
             }
         }
     }
@@ -65,10 +67,10 @@ public class DividerLinearLayout extends LinearLayout implements View.OnClickLis
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        int N = mVisibleChildren.size();
+        int n = mDividerChildren.size();
         int orientation = getOrientation();
-        for (int i = 0; i < N - 1; i++) {
-            View child = mVisibleChildren.get(i);
+        for (int i = 0; i < n - 1; i++) {
+            View child = mDividerChildren.get(i);
             if (orientation == HORIZONTAL) {
                 int startY = getPaddingTop() + mDividerPaddingStart;
                 int stopY = getHeight() - getPaddingBottom() - mDividerPaddingEnd;
@@ -84,8 +86,54 @@ public class DividerLinearLayout extends LinearLayout implements View.OnClickLis
         }
     }
 
+
     @Override
-    public void onClick(View v) {
-        v.setVisibility(View.GONE);
+    protected LinearLayout.LayoutParams generateDefaultLayoutParams() {
+        int orientation = getOrientation();
+        if (orientation == HORIZONTAL) {
+            return new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        } else if (orientation == VERTICAL) {
+            return new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        }
+        return null;
+    }
+
+    @Override
+    protected LinearLayout.LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        return new LayoutParams(p);
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        return p instanceof LayoutParams;
+    }
+
+    public static class LayoutParams extends LinearLayout.LayoutParams {
+
+        private boolean mIgnore = false;
+
+        public LayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
+            TypedArray a =
+                    c.obtainStyledAttributes(attrs, R.styleable.DividerLinearLayout_layout);
+
+            mIgnore = a.getBoolean(R.styleable.DividerLinearLayout_layout_ignore, false);
+
+            a.recycle();
+        }
+
+        public LayoutParams(int w, int h) {
+            super(w, h);
+        }
+
+        public LayoutParams(ViewGroup.LayoutParams source) {
+            super(source);
+        }
+
     }
 }

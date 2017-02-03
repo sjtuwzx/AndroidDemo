@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.wzx.android.demo.SlidingRemoveView;
 
+
 /**
  * Created by wang_zx on 2016/2/22.
  */

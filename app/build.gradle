@@ -1,15 +1,22 @@
+import com.android.build.gradle.AppExtension
+import com.android.build.gradle.AppPlugin
+
 import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.wzx.android.demo.v2"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -21,11 +28,57 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:+'
-    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:appcompat-v7:23+'
     compile 'com.android.support:recyclerview-v7:+'
-    compile files('libs/businessModel.jar')
+    compile 'com.android.support.constraint:constraint-layout:+'
+    compile 'com.google.code.javaparser:javaparser:1.0.8'
+    testCompile 'junit:junit:4.12'
 }
+
+afterEvaluate {
+    task checkstyle(type: Checkstyle) {
+        configFile file("${project.rootDir}/checkstyle.xml")
+        source 'src'
+        include '**/*.java'
+        exclude '**/gen/**'
+
+        classpath = files()
+    }
+    task checkstyleReport << {
+        if (file("$buildDir/reports/checkstyle/checkstyle.xml").exists()) {
+            ant.xslt(in: "$buildDir/reports/checkstyle/checkstyle.xml",
+                    style: "${project.parent.projectDir.absolutePath}/buildsrc/checkstyle-noframes-sorted.xsl",
+                    out: "$buildDir/reports/checkstyle/checkstyle.html"
+            )
+        }
+    }
+    gradle.taskGraph.afterTask { Task task, TaskState state ->
+        if (state.failure) {
+            if (task.name in ['checkstyle']) {
+                checkstyleReport.execute()
+            }
+        }
+    }
+
+    //需要检查的时候在主工程运行 ./gradlew :android-nova-hotel:checkstyle --stacktrace
+    //下面的代码是在bundleRelease的时候运行checkstyle
+    /*((AppExtension)((AppPlugin) project.getPlugins().getPlugin(AppPlugin)).extension).
+            applicationVariants.all {
+        def preBuildTask = project.tasks.findByName("preBuild")
+        def checkstyleTask = project.tasks.findByName("checkstyle")
+        preBuildTask.doFirst {
+            def start = System.currentTimeMillis();
+            try {
+                checkstyleTask.execute()
+            } finally {
+                println "[checkstyle] cost ${System.currentTimeMillis() - start} ms"
+            }
+        }
+    }*/
+}
+
 
 int countDirectory(File file) {
     File[] files = file.listFiles()

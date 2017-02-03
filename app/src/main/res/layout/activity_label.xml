@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light">
 
+    <View android:id="@+id/recommand_label"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
     <com.wzx.android.demo.label.HotelSpannableTextView
         android:id="@+id/spannable_text"
         android:layout_width="match_parent"
@@ -49,6 +53,13 @@
         android:id="@+id/btn2"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
+    <com.wzx.android.demo.label.HotelVerticalLabelView
+        android:id="@+id/vertical_label_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:vertical_spacing="5dp"/>
 
     <com.wzx.android.demo.label.HotelLabelView
         android:id="@+id/label_view"
