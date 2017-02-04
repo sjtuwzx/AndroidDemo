@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <item type="id" name="header_tag_key"/>
+    <item name="header_tag_key" type="id" />
 
 
 </resources>
