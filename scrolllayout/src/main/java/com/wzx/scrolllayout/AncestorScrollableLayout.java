@@ -1,4 +1,4 @@
-package com.wzx.android.demo.scrolllayout;
+package com.wzx.scrolllayout;
 
 import android.content.Context;
 import android.util.AttributeSet;
