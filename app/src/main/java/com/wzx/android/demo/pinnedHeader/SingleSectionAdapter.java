@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.wzx.android.demo.recycleable.RecycleGridLayout;
 import com.wzx.android.demo.v2.R;
 
 /**
@@ -62,7 +61,6 @@ public class SingleSectionAdapter extends SingleSectionBaseAdapter {
             holder = new ViewHolder();
             holder.mText = (TextView) convertView.findViewById(R.id.text);
             holder.mButton = (Button) convertView.findViewById(R.id.btn);
-            holder.mGridLayout = (RecycleGridLayout) convertView.findViewById(R.id.grid);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -78,7 +76,6 @@ public class SingleSectionAdapter extends SingleSectionBaseAdapter {
             return convertView;
         }
         holder.mText.setText(title);
-        holder.mGridLayout.setVisibility(View.GONE);
 
         return convertView;
     }
@@ -86,7 +83,5 @@ public class SingleSectionAdapter extends SingleSectionBaseAdapter {
     private static class ViewHolder {
         TextView mText;
         Button mButton;
-        RecycleGridLayout mGridLayout;
-
     }
 }

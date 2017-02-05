@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="column_count" format="integer" />
+    <attr name="child_width" format="dimension|reference" />
+    <attr name="child_height" format="dimension|reference" />
+    <attr name="horizontal_spacing" format="dimension|reference" />
+    <attr name="vertical_spacing" format="dimension|reference" />
+    <attr name="dividerColor" format="color|reference" />
+    <attr name="dividerSize" format="dimension|reference" />
+    <attr name="drawEdge" format="boolean|reference"/>
+
+    <declare-styleable name="RecycleGridLayout">
+        <attr name="column_count" />
+        <attr name="child_width"/>
+        <attr name="child_height"/>
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+        <attr name="dividerColor" />
+        <attr name="dividerSize" />
+        <attr name="drawEdge"/>
+    </declare-styleable>
+
+    <declare-styleable name="SmartGridLayout">
+        <attr name="column_count" />
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+        <attr name="dividerColor" />
+        <attr name="dividerSize" />
+        <attr name="drawEdge"/>
+        <attr name="divider_vertical_padding" format="dimension|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="RecycleAutoLayout">
+        <attr name="max_line" format="integer|reference" />
+        <attr name="horizontal_spacing" />
+        <attr name="vertical_spacing" />
+    </declare-styleable>
+
+</resources>

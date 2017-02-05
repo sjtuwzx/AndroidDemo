@@ -1,4 +1,4 @@
-package com.wzx.android.demo;
+package com.wzx.android.demo.slidingremove;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.wzx.android.demo.recycleable.SlidingRemoveGridLayout;
+import com.wzx.android.demo.HotelPlusSubViewHolder;
+import com.wzx.android.demo.InsuredPersonAdapter;
 import com.wzx.android.demo.v2.R;
 
 import java.util.ArrayList;

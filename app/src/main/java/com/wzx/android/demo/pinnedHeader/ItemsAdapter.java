@@ -1,11 +1,9 @@
 package com.wzx.android.demo.pinnedHeader;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.wzx.android.demo.GlobalAnimationHelper;
-import com.wzx.android.demo.SlidingRemoveView;
-import com.wzx.android.demo.recycleable.RecycleBaseLayout;
+import com.wzx.android.demo.slidingremove.SlidingRemoveView;
 import com.wzx.android.demo.v2.R;
 
 
@@ -23,7 +21,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,8 +30,7 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 	
 	private static final String TAG = ItemsAdapter.class.getSimpleName();
 
-	private final LayoutInflater mInflater;	
-	private RecycleBaseLayout.RecycleBin mImageGridRecycleBin = new RecycleBaseLayout.RecycleBin();
+	private final LayoutInflater mInflater;
 
 	private RecyclerView.RecycledViewPool mRecycledViewPool = new RecyclerView.RecycledViewPool();
 
@@ -55,17 +51,13 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-		ViewHolder holder = null;
+		ViewHolder holder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.list_item, parent, false);
 			holder = new ViewHolder();
 			holder.mSlidingRemoveView = (SlidingRemoveView) convertView.findViewById(R.id.sliding_remove_view);
 			holder.mText = (TextView) convertView.findViewById(R.id.text);
 			holder.mButton = (Button) convertView.findViewById(R.id.btn);
-			holder.mGridLayout = (RecycleBaseLayout) convertView.findViewById(R.id.grid);
-			holder.mGridLayout.setRecycleBin(mImageGridRecycleBin);
-			holder.mAdapter = new ImageGridAdapter(getContext());
-			holder.mGridLayout.setAdapter(holder.mAdapter);
 
 			RecyclerView recyclerView = (RecyclerView) convertView.findViewById(R.id.recycler_view);
 			LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -100,11 +92,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		}
 		holder.mText.setText(title);
 		holder.mButton.setOnClickListener(this);
-		List<String> imageList = new ArrayList<String>();
-		for (int i = 0; i < position % 20; i++) {
-			imageList.add(String.format("image%d", i + 1));
-		}
-		holder.mAdapter.setData(imageList);
 		convertView.setAlpha(1.0f);
 
 		holder.mRecyclerView.scrollToPosition(0);
@@ -115,8 +102,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		SlidingRemoveView mSlidingRemoveView;
 		TextView mText;
 		Button mButton;
-		RecycleBaseLayout mGridLayout;
-		ImageGridAdapter mAdapter;
 		RecyclerView mRecyclerView;
 		RecyclerView.Adapter mRecyclerAdapter;
 		
@@ -135,58 +120,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		// TODO Auto-generated method stub
 		Animation animation = AnimationUtils.loadAnimation(v.getContext(), R.anim.applaud_animation);
 		GlobalAnimationHelper.getInstance((Activity) v.getContext()).startAnimation(v, animation);
-	}
-	
-	public static class ImageGridAdapter extends BaseAdapter {
-		private final LayoutInflater mInflater;	
-		private List<String> mImageList;
-
-		public ImageGridAdapter(Context context) {
-			mInflater = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		}
-
-		public void setData(List<String> data) {
-
-			mImageList = data;
-			notifyDataSetChanged();
-
-		}
-
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return mImageList == null ? 0 : mImageList.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-
-		@Override
-		public int getItemViewType(int position) {
-			return position;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			if (convertView == null) {
-				convertView = mInflater.inflate(R.layout.image_item, parent, false);
-			}
-
-			return convertView;
-		}
-		
-	
 	}
 
 	private static class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {

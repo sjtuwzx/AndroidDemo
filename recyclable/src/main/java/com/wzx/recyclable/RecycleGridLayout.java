@@ -1,4 +1,4 @@
-package com.wzx.android.demo.recycleable;
+package com.wzx.recyclable;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,12 +8,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wzx.android.demo.v2.R;
-
-import static android.view.View.MeasureSpec.makeMeasureSpec;
-
 /**
- * 点评列表图片展示控件，实现全局child view复用
  *
  * @author wang_zx
  */
@@ -22,10 +17,11 @@ public class RecycleGridLayout extends RecycleBaseLayout {
     private static final String TAG = RecycleGridLayout.class.getSimpleName();
 
     private int mColumnCount = 1;
-    private int mChildWidth = 0;
-    private int mChildHeight = 0;
-    private int mHorizontalSpacing = 0;
-    private int mVerticalSpacing = 0;
+    protected int mChildWidth = 0;
+    protected int mChildHeight = 0;
+
+    protected int mHorizontalSpacing = 0;
+    protected int mVerticalSpacing = 0;
 
     private Paint mPaint = new Paint();
     private int mDividerColor;
@@ -74,15 +70,15 @@ public class RecycleGridLayout extends RecycleBaseLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // TODO Auto-generated method stub
-        int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int measuredWidth = View.MeasureSpec.getSize(widthMeasureSpec);
         int hPadding = getPaddingLeft() + getPaddingRight();
         int vPadding = getPaddingTop() + getPaddingBottom();
 
         int height = vPadding;
 
         int columnHeight = 0;
-        int N = getChildCount();
-        for (int i = 0; i < N; i++) {
+        int childCount = getChildCount();
+        for (int i = 0; i < childCount; i++) {
             if (mColumnCount > 0 && i != 0 && i % mColumnCount == 0) {
                 height += columnHeight + mVerticalSpacing;
                 columnHeight = 0;
@@ -92,19 +88,19 @@ public class RecycleGridLayout extends RecycleBaseLayout {
             LayoutParams lp = (LayoutParams) child.getLayoutParams();
             int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, hPadding, lp.width);
             if (mChildWidth > 0) {
-                childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(mChildWidth, MeasureSpec.EXACTLY);
+                childWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(mChildWidth, View.MeasureSpec.EXACTLY);
             }
             int childHorizontalSpace = measuredWidth - hPadding - mHorizontalSpacing * (mColumnCount - 1);
-            int childWidth = MeasureSpec.getSize(childWidthMeasureSpec);
+            int childWidth = View.MeasureSpec.getSize(childWidthMeasureSpec);
             if (mColumnCount > 0 && childWidth * mColumnCount > childHorizontalSpace) {
                 childWidth = childHorizontalSpace / mColumnCount;
-                childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(childWidth,
-                        MeasureSpec.getMode(childWidthMeasureSpec));
+                childWidthMeasureSpec = View.MeasureSpec.makeMeasureSpec(childWidth,
+                        View.MeasureSpec.getMode(childWidthMeasureSpec));
             }
 
             int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, vPadding, lp.height);
             if (mChildHeight > 0) {
-                childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(mChildHeight, MeasureSpec.EXACTLY);
+                childHeightMeasureSpec = View.MeasureSpec.makeMeasureSpec(mChildHeight, View.MeasureSpec.EXACTLY);
             }
 
             child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
@@ -115,7 +111,7 @@ public class RecycleGridLayout extends RecycleBaseLayout {
 
         height += columnHeight;
 
-        setMeasuredDimension(widthMeasureSpec, makeMeasureSpec(height, MeasureSpec.EXACTLY));
+        setMeasuredDimension(measuredWidth, height);
 
     }
 
@@ -129,11 +125,12 @@ public class RecycleGridLayout extends RecycleBaseLayout {
         int childLeft = paddingLeft;
         int childTop = paddingTop;
         int columnHeight = 0;
-        int N = getChildCount();
-        for (int i = 0; i < N; i++) {
+        int childCount = getChildCount();
+        for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
-            if (child.getVisibility() == View.GONE)
+            if (child.getVisibility() == View.GONE) {
                 continue;
+            }
 
             int childWidth = child.getMeasuredWidth();
             int childHeight = child.getMeasuredHeight();
@@ -214,5 +211,9 @@ public class RecycleGridLayout extends RecycleBaseLayout {
             canvas.drawLine(right, top, right, bottom, mPaint);
 
         }
+    }
+
+    public void setHorizontalSpacing(int mHorizontalSpacing) {
+        this.mHorizontalSpacing = mHorizontalSpacing;
     }
 }

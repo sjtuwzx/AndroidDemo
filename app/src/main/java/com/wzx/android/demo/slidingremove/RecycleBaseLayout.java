@@ -1,7 +1,8 @@
-package com.wzx.android.demo.recycleable;
+package com.wzx.android.demo.slidingremove;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
@@ -12,12 +13,17 @@ import java.util.ArrayList;
 
 /**
  * Created by wang_zx on 2016/1/19.
+ *
+ * Item 垮控件复用时OnItemClickListener设置可能会异常
  */
 public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClickListener {
 
     private ListAdapter mAdapter;
     private AdapterDataSetObserver mDataSetObserver = new AdapterDataSetObserver();
     private RecycleBin mRecycleBin = new RecycleBin();
+    private Handler mHandler = new Handler();
+
+    private final boolean[] mIsScrap = new boolean[1];
 
     public RecycleBaseLayout(Context context) {
         super(context);
@@ -37,16 +43,27 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
         public void onChanged() {
             // TODO Auto-generated method stub
             super.onChanged();
-            refreshChildren();
+
+            mHandler.removeCallbacks(mRefreshChildrenRunnable);
+            mHandler.post(mRefreshChildrenRunnable);
         }
 
         @Override
         public void onInvalidated() {
             // TODO Auto-generated method stub
             super.onInvalidated();
-            refreshChildren();
+
+            mHandler.removeCallbacks(mRefreshChildrenRunnable);
+            mHandler.post(mRefreshChildrenRunnable);
         }
     }
+
+    private Runnable mRefreshChildrenRunnable = new Runnable() {
+        @Override
+        public void run() {
+            refreshChildren();
+        }
+    };
 
     public void setAdapter(ListAdapter adapter) {
         if (mAdapter == adapter) {
@@ -70,24 +87,37 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
         if (mAdapter != null) {
             int childCount = mAdapter.getCount();
             for (int position = 0; position < childCount; position++) {
-                View child = obtainView(position);
+                View child = obtainView(position, mIsScrap);
 
-                addView(child, -1);
+                if (mIsScrap[0]) {
+                    attachViewToParent(child, -1, child.getLayoutParams());
+                } else {
+                    addViewInLayout(child, -1, child.getLayoutParams(), true);
+                }
             }
         }
+
+        requestLayout();
+        invalidate();
     }
 
-    private View obtainView(int position) {
+    private View obtainView(int position, boolean[] isScrap) {
         int viewType = mAdapter.getItemViewType(position);
         View scrapView = mRecycleBin == null ? null
                 : mRecycleBin .getScrapView(viewType);
+
         View child = mAdapter.getView(position, scrapView, this);
         setItemViewLayoutParams(child, position);
-        child.setOnClickListener(this);
+
+        if (mOnItemClickListener != null && !child.hasOnClickListeners()) {
+            child.setOnClickListener(this);
+        }
 
         if (scrapView != null && scrapView != child) {
             mRecycleBin.addScrapView(scrapView);
         }
+
+        isScrap[0] = scrapView == child;
 
         return child;
     }
@@ -95,15 +125,13 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
     protected void removeAllChildren() {
         // TODO Auto-generated method stub
         if (mRecycleBin != null) {
-            int N = getChildCount();
-            for (int i = 0; i < N; i++) {
+            int childCount = getChildCount();
+            for (int i = 0; i < childCount; i++) {
                 View child = getChildAt(i);
-                child.setOnClickListener(null);
-
                 mRecycleBin.addScrapView(child);
             }
         }
-        removeAllViews();
+        detachAllViewsFromParent();
     }
 
     private void setItemViewLayoutParams(View child, int position) {
@@ -125,7 +153,7 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
 
     @Override
     protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
-        return new RecycleBaseLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+        return new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 0);
     }
 
@@ -178,13 +206,15 @@ public abstract class RecycleBaseLayout extends ViewGroup implements View.OnClic
 
     public static class RecycleBin {
 
-        private SparseArray<ArrayList<View>> mScrapViewsMap = new SparseArray<ArrayList<View>>();
+        private SparseArray<ArrayList<View>> mScrapViewsMap = new SparseArray<>();
 
         private View getScrapView(int viewType) {
             if (viewType >= 0) {
                 ArrayList<View> scrapViews = mScrapViewsMap.get(viewType);
                 if (scrapViews != null && scrapViews.size() > 0) {
-                    return scrapViews.remove(0);
+                    View scrapView = scrapViews.remove(0);
+                    scrapView.layout(0, 0, 0, 0);
+                    return scrapView;
                 }
             }
             return null;

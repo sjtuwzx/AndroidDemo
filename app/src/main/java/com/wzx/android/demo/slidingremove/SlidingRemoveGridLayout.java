@@ -1,12 +1,11 @@
-package com.wzx.android.demo.recycleable;
+package com.wzx.android.demo.slidingremove;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.wzx.android.demo.SlidingRemoveView;
+import android.widget.FrameLayout;
 
 
 /**

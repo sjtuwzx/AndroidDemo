@@ -1,4 +1,4 @@
-package com.wzx.android.demo.recycleable;
+package com.wzx.recyclable;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,6 @@ import android.graphics.Paint;
 import android.support.v4.util.ArrayMap;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.wzx.android.demo.v2.R;
 
 import java.util.ArrayList;
 import java.util.List;

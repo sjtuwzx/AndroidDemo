@@ -1,4 +1,4 @@
-package com.wzx.android.demo;
+package com.wzx.android.demo.slidingremove;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

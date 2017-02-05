@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.wzx.android.demo.slidingremove.SlidingRemoveView;
 import com.wzx.android.demo.v2.R;
 
 import java.util.List;
