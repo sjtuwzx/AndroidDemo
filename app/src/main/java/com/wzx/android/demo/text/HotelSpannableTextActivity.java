@@ -1,8 +1,7 @@
-package com.wzx.android.demo.label;
+package com.wzx.android.demo.text;
 
 import android.app.Activity;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -22,15 +21,11 @@ import com.wzx.android.demo.v2.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import ctrip.android.hotel.filter.DeviceInfoUtil;
-
 /**
  * Created by wang_zx on 2015/12/17.
  */
-public class HotelLabelActivity extends Activity implements View.OnClickListener {
+public class HotelSpannableTextActivity extends Activity implements View.OnClickListener {
 
-    private HotelLabelView mLabelView;
-    private HotelVerticalLabelView mVerticalLabelView;
 
     private TextView mText1;
     private TextView mText2;
@@ -49,7 +44,7 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_label);
+        setContentView(R.layout.activity_text);
 
         mListView = (ChildrenLayoutObservableListView) findViewById(R.id.list);
         mListView.setOnChildrenLayoutListener(new ChildrenLayoutObservableListView.OnChildrenLayoutListener() {
@@ -75,112 +70,6 @@ public class HotelLabelActivity extends Activity implements View.OnClickListener
         mButton2 = (Button) findViewById(R.id.btn2);
         mButton1.setOnClickListener(this);
         mButton2.setOnClickListener(this);
-
-
-        mLabelView = (HotelLabelView) findViewById(R.id.label_view);
-
-        mVerticalLabelView = (HotelVerticalLabelView) findViewById(R.id.vertical_label_view);
-
-        List<HotelLabelDrawable> leftLabelDrawables = new ArrayList<HotelLabelDrawable>();
-        for (int i = 0; i < 10; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
-            HotelTagViewModel model = new HotelTagViewModel();
-            model.hasSubTitle = false;
-
-            HotelTagStyleViewModel styleViewModel = new HotelTagStyleViewModel();
-            styleViewModel.tagFrameColor = "#ffb786";
-            styleViewModel.tagFrameWidth = 1.0f;
-            styleViewModel.tagCornerRadius = 1.0f;
-            model.styleViewModel = styleViewModel;
-
-            HotelTagBasicViewModel mainLabelModel = new HotelTagBasicViewModel();
-            mainLabelModel.tagTitle = "今夜特惠";
-            mainLabelModel.tagFontColor = "#ff6000";
-            mainLabelModel.tagFontSize = 9.0f;
-            mainLabelModel.tagBackgroundColor = "#ffffff";
-            styleViewModel.mainTagViewModel = mainLabelModel;
-
-            HotelTagBasicViewModel subLabelModel = new HotelTagBasicViewModel();
-            subLabelModel.tagTitle = "20RMB";
-            subLabelModel.tagFontColor = "#ff00ff00";
-            subLabelModel.tagFontSize = 10;
-            subLabelModel.tagBackgroundColor = "#80ff0000";
-            styleViewModel.subTagViewModel = subLabelModel;
-
-
-            drawable.setLabelModel(model);
-            leftLabelDrawables.add(drawable);
-        }
-
-        mVerticalLabelView.refreshLabelDrawables(leftLabelDrawables);
-
-        List<HotelLabelDrawable> rightLabelDrawables = new ArrayList<HotelLabelDrawable>();
-        for (int i = 0; i < 10; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
-            HotelTagViewModel model = new HotelTagViewModel();
-            model.hasSubTitle = true;
-
-            HotelTagStyleViewModel styleViewModel = new HotelTagStyleViewModel();
-            styleViewModel.tagFrameColor = "#ffff0000";
-            styleViewModel.tagFrameWidth = 1;
-            styleViewModel.tagCornerRadius = 5;
-            model.styleViewModel = styleViewModel;
-
-            HotelTagBasicViewModel mainLabelModel = new HotelTagBasicViewModel();
-            mainLabelModel.tagTitle = "首住特惠";
-            mainLabelModel.tagFontColor = "#ff00ff00";
-            mainLabelModel.tagFontSize = 10;
-            mainLabelModel.tagBackgroundColor = "#80ff0000";
-            styleViewModel.mainTagViewModel = mainLabelModel;
-
-            HotelTagBasicViewModel subLabelModel = new HotelTagBasicViewModel();
-            subLabelModel.tagTitle = "20RMB";
-            subLabelModel.tagFontColor = "#ff6000";
-            subLabelModel.tagFontSize = 8;
-            subLabelModel.tagBackgroundColor = "#fff6f0";
-            styleViewModel.subTagViewModel = subLabelModel;
-
-
-            drawable.setLabelModel(model);
-            rightLabelDrawables.add(drawable);
-        }
-        mLabelView.refreshRightLabelDrawables(rightLabelDrawables);
-
-
-        List<HotelLabelDrawable> priorityDisplayRightDrawables = new ArrayList<HotelLabelDrawable>();
-        for (int i = 0; i < 2; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
-            HotelTagViewModel model = new HotelTagViewModel();
-            model.hasSubTitle = false;
-
-            HotelTagStyleViewModel styleViewModel = new HotelTagStyleViewModel();
-            styleViewModel.tagFrameColor = "";
-            styleViewModel.tagFrameWidth = -1.0f;
-            styleViewModel.tagCornerRadius = 2.0f;
-            model.styleViewModel = styleViewModel;
-
-            HotelTagBasicViewModel mainLabelModel = new HotelTagBasicViewModel();
-            mainLabelModel.tagTitle = "超值返现";
-            mainLabelModel.tagFontColor = "#ffffff";
-            mainLabelModel.tagFontSize = 11.0f;
-            mainLabelModel.tagBackgroundColor = "#4a81fb";
-            styleViewModel.mainTagViewModel = mainLabelModel;
-
-            HotelTagBasicViewModel subLabelModel = new HotelTagBasicViewModel();
-            subLabelModel.tagTitle = "123";
-            subLabelModel.tagFontColor = "#00000000";
-            subLabelModel.tagFontSize = 11.0f;
-            subLabelModel.tagBackgroundColor = "#00000000";
-            styleViewModel.subTagViewModel = subLabelModel;
-
-            model.hasSubTitle = true;
-
-
-            drawable.setLabelModel(model);
-            priorityDisplayRightDrawables.add(drawable);
-        }
-        mLabelView.refreshPriorityDisplayRightDrawables(priorityDisplayRightDrawables);
-
 
         mSpannableTextView = (HotelSpannableTextView) findViewById(R.id.spannable_text);
 

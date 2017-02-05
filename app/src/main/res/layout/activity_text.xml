@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp" />
 
-    <com.wzx.android.demo.label.HotelSpannableTextView
+    <com.wzx.android.demo.text.HotelSpannableTextView
         android:id="@+id/spannable_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,19 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
-    <com.wzx.android.demo.label.HotelVerticalLabelView
-        android:id="@+id/vertical_label_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:vertical_spacing="5dp"/>
-
-    <com.wzx.android.demo.label.HotelLabelView
-        android:id="@+id/label_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:horizontal_spacing="5dp"/>
 
     <com.wzx.android.demo.ChildrenLayoutObservableListView
         android:id="@+id/list"

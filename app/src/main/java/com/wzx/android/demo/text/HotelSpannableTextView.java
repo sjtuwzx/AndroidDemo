@@ -1,4 +1,4 @@
-package com.wzx.android.demo.label;
+package com.wzx.android.demo.text;
 
 import android.content.Context;
 import android.graphics.Canvas;
