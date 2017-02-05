@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.wzx.android.demo.ChildrenLayoutObservableListView;
 import com.wzx.android.demo.HotelGoodsRecommendDrawable;
-import com.wzx.android.demo.pinnedHeader.ItemsAdapter;
+import com.wzx.android.demo.ItemsAdapter;
 import com.wzx.android.demo.v2.R;
 
 import java.util.ArrayList;

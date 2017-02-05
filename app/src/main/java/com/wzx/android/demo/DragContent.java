@@ -13,8 +13,6 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
 
-import com.wzx.android.demo.pinnedHeader.PinnedHeaderTouchHelper;
-
 /**
  * Created by wang_zx on 2015/5/19.
  */

@@ -1,1 +1,1 @@
-include ':app', ':scrolllayout', ':label', ':recyclable'
+include ':app', ':scrolllayout', ':label', ':recyclable', ':sticky'

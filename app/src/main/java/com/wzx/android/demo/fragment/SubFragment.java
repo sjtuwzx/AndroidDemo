@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.wzx.android.demo.MainActivity;
 import com.wzx.android.demo.v2.R;
 
 /**

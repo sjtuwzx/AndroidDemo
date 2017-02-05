@@ -202,9 +202,9 @@ public class HotelLocationTextView extends View {
             return 0;
         }
 
-        int linecount = layout.getLineCount();
+        int lineCount = layout.getLineCount();
         int pad = getPaddingTop() + getPaddingBottom();
-        int desired = layout.getLineTop(linecount);
+        int desired = layout.getLineTop(lineCount);
         desired += pad;
 
         return desired;

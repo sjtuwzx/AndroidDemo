@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.wzx.android.demo.adapter.InsertItemAdapter;
-import com.wzx.android.demo.pinnedHeader.ItemsAdapter;
 import com.wzx.android.demo.v2.R;
 
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.wzx.android.demo.pinnedHeader.ItemsAdapter;
+import com.wzx.android.demo.ItemsAdapter;
 import com.wzx.android.demo.v2.R;
 
 import java.util.ArrayList;
