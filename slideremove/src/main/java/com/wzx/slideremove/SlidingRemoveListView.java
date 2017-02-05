@@ -1,27 +1,27 @@
-package com.wzx.android.demo.slidingremove;
+package com.wzx.slideremove;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.ListView;
 
 
 /**
  * Created by wang_zx on 2016/2/22.
  */
-public class SlidingRemoveGridLayout extends RecycleGridLayout {
+public class SlidingRemoveListView extends ListView {
 
-    public SlidingRemoveGridLayout(Context context) {
-        this(context, null);
+    public SlidingRemoveListView(Context context) {
+        super(context);
     }
 
-    public SlidingRemoveGridLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+    public SlidingRemoveListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
-    public SlidingRemoveGridLayout(Context context, AttributeSet attrs, int defStyle) {
+    public SlidingRemoveListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
@@ -30,12 +30,10 @@ public class SlidingRemoveGridLayout extends RecycleGridLayout {
         final int action = MotionEventCompat.getActionMasked(ev);
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                if (closeSlidingRemoveChildren(ev)) {
-                    return true;
-                }
+                closeSlidingRemoveChildren(ev);
                 break;
-            case MotionEvent.ACTION_POINTER_DOWN:
-                return false;
+            default:
+                break;
         }
         return super.dispatchTouchEvent(ev);
     }

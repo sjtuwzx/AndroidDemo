@@ -1,4 +1,4 @@
-package com.wzx.android.demo.slidingremove;
+package com.wzx.slideremove;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,8 +14,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-
-import com.wzx.android.demo.v2.R;
 
 /**
  * Created by wang_zx on 2016/2/3.
@@ -38,7 +36,7 @@ public class SlidingRemoveView extends ViewGroup implements ValueAnimator.Animat
     private boolean mCanOpen = true;
     private boolean mIsOpened = false;
 
-    private boolean mShowRemoveAnimator = true;
+    private boolean mShowRemoveAnimator = false;
     private float mRemoveAnimatorFactor = 0.0f;
 
     private boolean mIsBeingDragged = false;

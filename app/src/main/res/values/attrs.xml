@@ -19,28 +19,6 @@
         <attr name="vertical_spacing" />
     </declare-styleable>
 
-
-    <declare-styleable name="RecycleGridLayout">
-        <attr name="column_count" />
-        <attr name="child_width"/>
-        <attr name="child_height"/>
-        <attr name="horizontal_spacing" />
-        <attr name="vertical_spacing" />
-        <attr name="dividerColor" />
-        <attr name="dividerSize" />
-        <attr name="drawEdge"/>
-    </declare-styleable>
-
-    <declare-styleable name="SmartGridLayout">
-        <attr name="column_count" />
-        <attr name="horizontal_spacing" />
-        <attr name="vertical_spacing" />
-        <attr name="dividerColor" />
-        <attr name="dividerSize" />
-        <attr name="drawEdge"/>
-        <attr name="divider_vertical_padding" format="dimension|reference" />
-    </declare-styleable>
-
     <attr name="max_collapse_line" format="integer" />
     <attr name="collapse_button" format="reference" />
     <attr name="expand_button" format="reference" />
@@ -104,32 +82,12 @@
         <attr name="autoStretchChildren" format="boolean|reference" />
     </declare-styleable>
 
-    <declare-styleable name="HotelLabelView">
-        <attr name="horizontal_spacing" />
-    </declare-styleable>
-
-    <declare-styleable name="HotelVerticalLabelView">
-        <attr name="vertical_spacing" />
-        <attr name="child_width"/>
-        <attr name="child_height"/>
-    </declare-styleable>
-
-    <declare-styleable name="FilterSectionView">
-        <attr name="header_list_width" format="dimension|reference" />
-    </declare-styleable>
-
     <declare-styleable name="TextAppearance2">
         <attr name="android:textSize" />
         <attr name="android:textColor" />
         <attr name="android:textStyle" />
         <attr name="android:typeface" />
         <attr name="textAllCaps" />
-    </declare-styleable>
-
-    <declare-styleable name="SlidingRemoveView">
-        <attr name="container_view_id" format="reference" />
-        <attr name="remove_button_id" format="reference" />
-        <attr name="remove_animator_duration" format="integer|reference" />
     </declare-styleable>
 
     <declare-styleable name="HotelLabelLayout">
@@ -142,10 +100,6 @@
 
     <declare-styleable name="TintDrawableTextView">
         <attr name="drawable_tint_color" format="color|reference"/>
-    </declare-styleable>
-
-    <declare-styleable name="StickyScrollDescendantView">
-        <attr name="content_id" format="reference" />
     </declare-styleable>
 
 

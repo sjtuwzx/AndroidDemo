@@ -2,7 +2,6 @@ package com.wzx.android.demo;
 
 import java.util.List;
 
-import com.wzx.android.demo.slidingremove.SlidingRemoveView;
 import com.wzx.android.demo.v2.R;
 
 
@@ -23,7 +22,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListener {
 	
@@ -54,7 +52,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.list_item, parent, false);
 			holder = new ViewHolder();
-			holder.mSlidingRemoveView = (SlidingRemoveView) convertView.findViewById(R.id.sliding_remove_view);
 			holder.mText = (TextView) convertView.findViewById(R.id.text);
 			holder.mButton = (Button) convertView.findViewById(R.id.btn);
 
@@ -76,13 +73,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.mSlidingRemoveView.reset();
-		holder.mSlidingRemoveView.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getContext(), "mSlidingRemoveView", Toast.LENGTH_SHORT).show();
-			}
-		});
 		holder.mText.setText("");
 
 		String title = getItem(position);
@@ -98,7 +88,6 @@ public class ItemsAdapter extends ArrayAdapter<String> implements OnClickListene
 	}
 	
 	private static class ViewHolder {
-		SlidingRemoveView mSlidingRemoveView;
 		TextView mText;
 		Button mButton;
 		RecyclerView mRecyclerView;

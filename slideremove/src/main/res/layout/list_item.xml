@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wzx.slideremove.SlidingRemoveView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_remove_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    app:container_view_id="@+id/container_view"
+    app:remove_animator_duration="300"
+    app:remove_button_id="@+id/btn_remove">
+
+    <TextView
+        android:id="@+id/btn_remove"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@android:color/white" />
 
     <LinearLayout
+        android:id="@+id/container_view"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#ffffff"
@@ -36,12 +50,4 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp" />
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="#FF0000"
-        android:scrollbars="horizontal" />
-
-</LinearLayout>
+</com.wzx.slideremove.SlidingRemoveView>

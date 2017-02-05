@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SlidingRemoveView">
+        <attr name="container_view_id" format="reference" />
+        <attr name="remove_button_id" format="reference" />
+        <attr name="remove_animator_duration" format="integer|reference" />
+    </declare-styleable>
+
+
+</resources>
