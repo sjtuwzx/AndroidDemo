@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="child_width" format="dimension|reference" />
+    <attr name="child_height" format="dimension|reference" />
+    <attr name="horizontal_spacing" format="dimension|reference" />
+    <attr name="vertical_spacing" format="dimension|reference" />
+
+    <declare-styleable name="TextAppearance2">
+        <attr name="android:textSize" />
+        <attr name="android:textColor" />
+        <attr name="android:textStyle" />
+        <attr name="android:typeface" />
+        <attr name="textAllCaps" />
+    </declare-styleable>
+
+    <declare-styleable name="HotelLabelView">
+        <attr name="horizontal_spacing" />
+        <attr name="child_width"/>
+        <attr name="child_height"/>
+    </declare-styleable>
+
+    <declare-styleable name="HotelVerticalLabelView">
+        <attr name="vertical_spacing" />
+        <attr name="child_width"/>
+        <attr name="child_height"/>
+    </declare-styleable>
+
+</resources>

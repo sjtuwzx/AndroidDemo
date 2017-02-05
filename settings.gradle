@@ -1,1 +1,1 @@
-include ':app', ':scrolllayout'
+include ':app', ':scrolllayout', ':label'
