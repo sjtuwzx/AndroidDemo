@@ -5,12 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.VelocityTrackerCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 
 /**
@@ -35,6 +36,10 @@ public class ScrollLinearLayout extends ViewGroup {
     private int mActivePointerId = INVALID_POINTER;
     private static final int INVALID_POINTER = -1;
 
+    protected VelocityTracker mVelocityTracker;
+    private int mMinimumVelocity;
+    protected int mMaximumVelocity;
+
     private ValueAnimator mAnimator;
 
     public ScrollLinearLayout(Context context) {
@@ -48,7 +53,10 @@ public class ScrollLinearLayout extends ViewGroup {
     public ScrollLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+        final ViewConfiguration configuration = ViewConfiguration.get(context);
+        mTouchSlop = configuration.getScaledTouchSlop();
+        mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
+        mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
     }
 
     @Override
@@ -95,6 +103,10 @@ public class ScrollLinearLayout extends ViewGroup {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (mVelocityTracker != null)  {
+            mVelocityTracker.addMovement(ev);
+        }
+
         final int action = MotionEventCompat.getActionMasked(ev);
         switch (action) {
             case MotionEvent.ACTION_DOWN:
@@ -116,14 +128,12 @@ public class ScrollLinearLayout extends ViewGroup {
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 if (mIsBeingDragged) {
-                    float scrollY = internalGetScrollY();
-                    float targetScrollY;
-                    if (scrollY > mMaxScrollY / 2) {
-                        targetScrollY = mMaxScrollY;
-                    } else {
-                        targetScrollY = 0;
-                    }
+                    float targetScrollY = determineTargetScrollY();
                     smoothScrollTo(targetScrollY);
+                }
+                if (mVelocityTracker != null) {
+                    mVelocityTracker.recycle();
+                    mVelocityTracker = null;
                 }
                 break;
             default:
@@ -135,9 +145,6 @@ public class ScrollLinearLayout extends ViewGroup {
 
     private void onTouchDown(MotionEvent ev) {
         interceptDescendantTouchEvent(this, false);
-        if (mAnimator != null) {
-            mAnimator.cancel();
-        }
         mIsBeingDragged = false;
         mDisallowIntercept = false;
 
@@ -151,6 +158,11 @@ public class ScrollLinearLayout extends ViewGroup {
             mIsUnableToDrag = true;
         } else {
             mIsUnableToDrag = false;
+            mVelocityTracker = VelocityTracker.obtain();
+
+            if (mAnimator != null) {
+                mAnimator.cancel();
+            }
         }
     }
 
@@ -181,13 +193,14 @@ public class ScrollLinearLayout extends ViewGroup {
         final int pointerIndex = ev.getActionIndex();
         final int pointerId = ev.getPointerId(pointerIndex);
         if (pointerId == mActivePointerId) {
-            // This was our active pointer going up. Choose a new
-            // active pointer and adjust accordingly.
-            // TODO: Make this decision more intelligent.
             final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
             mMotionX = (int) ev.getX(newPointerIndex);
             mMotionY = (int) ev.getY(newPointerIndex);
             mActivePointerId = ev.getPointerId(newPointerIndex);
+
+            if (mVelocityTracker != null) {
+                mVelocityTracker.clear();
+            }
         }
     }
 
@@ -200,6 +213,29 @@ public class ScrollLinearLayout extends ViewGroup {
                 interceptDescendantTouchEvent(this, true);
             }
         }
+    }
+
+    private float determineTargetScrollY() {
+        final VelocityTracker velocityTracker = mVelocityTracker;
+        velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
+        int velocity = (int) VelocityTrackerCompat.getYVelocity(velocityTracker, mActivePointerId);
+
+        float targetScrollY;
+        if (Math.abs(velocity) > mMinimumVelocity) {
+            if (velocity > 0) {
+                targetScrollY = 0;
+            } else {
+                targetScrollY = mMaxScrollY;
+            }
+        } else {
+            float scrollY = internalGetScrollY();
+            if (scrollY > mMaxScrollY / 2) {
+                targetScrollY = mMaxScrollY;
+            } else {
+                targetScrollY = 0;
+            }
+        }
+        return targetScrollY;
     }
 
     private static boolean isViewUnder(View view, float x, float y) {
@@ -245,11 +281,7 @@ public class ScrollLinearLayout extends ViewGroup {
         }
         float scrollY = internalGetScrollY();
         mAnimator = ValueAnimator.ofFloat(scrollY, y);
-        if (scrollY >= y) {
-            mAnimator.setInterpolator(new DecelerateInterpolator(2f));
-        } else {
-            mAnimator.setInterpolator(new AccelerateInterpolator(2f));
-        }
+        mAnimator.setInterpolator(new DecelerateInterpolator(2f));
         mAnimator.setDuration(200);
         mAnimator.addUpdateListener(mAnimatorUpdateListener);
         mAnimator.addListener(mAnimatorListener);
