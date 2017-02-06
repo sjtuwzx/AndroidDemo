@@ -1,5 +1,6 @@
 package com.wzx.label;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -15,6 +16,8 @@ import android.view.View;
 public class HotelLabelDrawable extends HotelLabelBaseDrawable {
 
     private static final float DEFAULT_FONT_SIZE = 10f;
+
+    private Context mContext;
 
     private Paint mFramePaint = new Paint();
     private Paint mMainBackgroundPaint = new Paint();
@@ -34,14 +37,16 @@ public class HotelLabelDrawable extends HotelLabelBaseDrawable {
     private RectF mFrameRect = new RectF();
     private Path mFramePath = new Path();
 
-    public HotelLabelDrawable() {
+    public HotelLabelDrawable(Context context) {
+        mContext = context.getApplicationContext();
+
         mFramePaint.setStyle(Paint.Style.STROKE);
         mFramePaint.setAntiAlias(true);
 
         mMainBackgroundPaint.setAntiAlias(true);
         mSubBackgroundPaint.setAntiAlias(true);
 
-        mTextHorizontalPadding = ViewUtils.dip2px(ApplicationHelper.getInstance().getApplication(), 2.5f);
+        mTextHorizontalPadding = ViewUtils.dip2px(mContext, 2.5f);
     }
 
     public void setLabelModel(HotelLabelModel model) {
@@ -58,9 +63,9 @@ public class HotelLabelDrawable extends HotelLabelBaseDrawable {
     private void buildTextLayout() {
 
         mFramePaint.setColor(mLabelModel.mFrameColor);
-        int frameWidth = Math.max(0, ViewUtils.dip2px(ApplicationHelper.getInstance().getApplication(), mLabelModel.mFrameWidth));
+        int frameWidth = Math.max(0, ViewUtils.dip2px(mContext, mLabelModel.mFrameWidth));
         mFramePaint.setStrokeWidth(frameWidth);
-        mLabelRadius = Math.max(0, ViewUtils.dip2px(ApplicationHelper.getInstance().getApplication(), mLabelModel.mFrameCornerRadius));
+        mLabelRadius = Math.max(0, ViewUtils.dip2px(mContext, mLabelModel.mFrameCornerRadius));
 
         if (!TextUtils.isEmpty(mLabelModel.mMainText)) {
             mMainBackgroundPaint.setColor(mLabelModel.mMainBackgroundColor);
@@ -77,11 +82,11 @@ public class HotelLabelDrawable extends HotelLabelBaseDrawable {
         }
     }
 
-    private static int getFontSize(float fontSize, float defaultFontSize) {
+    private int getFontSize(float fontSize, float defaultFontSize) {
         if (fontSize > 0) {
-            return ViewUtils.dip2px(ApplicationHelper.getInstance().getApplication(), fontSize);
+            return ViewUtils.dip2px(mContext, fontSize);
         } else {
-            return ViewUtils.dip2px(ApplicationHelper.getInstance().getApplication(), defaultFontSize);
+            return ViewUtils.dip2px(mContext, defaultFontSize);
         }
     }
 

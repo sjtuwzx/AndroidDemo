@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private void initLabelView() {
         List<HotelLabelBaseDrawable> leftLabelDrawables = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
+            HotelLabelDrawable drawable = new HotelLabelDrawable(this);
 
             HotelLabelModel model = new HotelLabelModel();
             model.mFrameColor = 0xffffb786;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<HotelLabelBaseDrawable> rightLabelDrawables = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
+            HotelLabelDrawable drawable = new HotelLabelDrawable(this);
 
             HotelLabelModel model = new HotelLabelModel();
             model.mFrameColor = 0xffff0000;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<HotelLabelBaseDrawable> priorityDisplayRightDrawables = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
+            HotelLabelDrawable drawable = new HotelLabelDrawable(this);
 
             HotelLabelModel model = new HotelLabelModel();
             model.mFrameColor = Color.TRANSPARENT;
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     private void initVerticalLabelView() {
         List<HotelLabelBaseDrawable> labelDrawables = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            HotelLabelDrawable drawable = new HotelLabelDrawable();
+            HotelLabelDrawable drawable = new HotelLabelDrawable(this);
 
             HotelLabelModel model = new HotelLabelModel();
             model.mFrameColor = 0xffffb786;

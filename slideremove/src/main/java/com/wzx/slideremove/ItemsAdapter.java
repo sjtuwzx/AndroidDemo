@@ -41,6 +41,7 @@ public class ItemsAdapter extends ArrayAdapter<String> {
 			convertView = mInflater.inflate(R.layout.list_item, parent, false);
 			holder = new ViewHolder();
 			holder.mSlidingRemoveView = (SlidingRemoveView) convertView.findViewById(R.id.sliding_remove_view);
+			holder.mSlidingRemoveView.setShowRemoveAnimator(true);
 			holder.mText = (TextView) convertView.findViewById(R.id.text);
 			holder.mButton = (Button) convertView.findViewById(R.id.btn);
 

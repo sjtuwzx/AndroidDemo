@@ -1,8 +1,11 @@
 package com.wzx.android.demo;
 
 import android.app.Activity;
+import android.app.Application;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import com.wzx.android.demo.adapter.InsertItemAdapter;
 import com.wzx.android.demo.v2.R;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +34,9 @@ public class ItemInsertAdapterSample extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_insert_adapter);
+
+
+
         TextView textView = (TextView) findViewById(R.id.text);
         String text = "费用 \n\r" +
                 "以下费用和押金由酒店在提供服务、办理入住或退房手续时收取。 \n" +
@@ -42,6 +49,27 @@ public class ItemInsertAdapterSample extends Activity {
                 "折叠床使用费：每晚 AUD 30   \n" +
                 "上面所列内容可能并不完整。这些费用和押金可能不包括税款，并且可能会随时发生变化。";
         textView.setText(Html.fromHtml(text));
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                                final Class<?> activityThreadClass =
+                                        Class.forName("android.app.ActivityThread");
+                                final Method method = activityThreadClass.getMethod("currentApplication");
+                                Application application = (Application) method.invoke(null, (Object[]) null);
+                                Log.i("wzx", "application = " + application);
+                            }
+                        } catch (final Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
 
         final ImageView imageView = (ImageView) findViewById(R.id.image);
         imageView.setOnClickListener(new View.OnClickListener() {
