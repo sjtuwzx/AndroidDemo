@@ -115,8 +115,8 @@ public class ScrollLinearLayout extends ViewGroup {
             case MotionEvent.ACTION_POINTER_DOWN:
                 final int pointerIndex = ev.getActionIndex();
                 mActivePointerId = ev.getPointerId(pointerIndex);
-                mMotionX = ev.getX(mActivePointerId);
-                mMotionY = ev.getY(mActivePointerId);
+                mMotionX = ev.getX(pointerIndex);
+                mMotionY = ev.getY(pointerIndex);
 
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -206,7 +206,8 @@ public class ScrollLinearLayout extends ViewGroup {
 
     private void determineDrag(MotionEvent ev) {
         if (!mDisallowIntercept && !mIsUnableToDrag && !mIsBeingDragged) {
-            final float y = ev.getY(mActivePointerId);
+            int pointerIndex = ev.findPointerIndex(mActivePointerId);
+            final float y = ev.getY(pointerIndex);
             final float ady = Math.abs(y - mInitialMotionY);
             if (ady > mTouchSlop) {
                 mIsBeingDragged = true;
