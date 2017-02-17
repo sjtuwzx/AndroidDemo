@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -107,7 +106,7 @@ public class ScrollLinearLayout extends ViewGroup {
             mVelocityTracker.addMovement(ev);
         }
 
-        final int action = MotionEventCompat.getActionMasked(ev);
+        final int action = ev.getActionMasked();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 onTouchDown(ev);
